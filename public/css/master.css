@@ -1,0 +1,50 @@
+.darkBlueBkg{ background-color: #0A2933}
+.darkBlue{ color: #0A2933}
+.darkerBlueBkg{ background-color: #042029}
+.darkerBlue{ color: #042029}
+.darkGrayBkg{ background-color: #475B62}
+.darkGray{ color: #475B62}
+.yellowBkg{ background-color: #A57706}
+.yellow{ color: #A57706}
+.orangeBkg{ background-color: #BD3613}
+.orange{ color: #BD3613}
+.redBkg{ background-color: #D11C24}
+.red{ color: #D11C24}
+.purpleBkg{ background-color: #595AB7}
+.purple{ color: #595AB7}
+.blueBkg{ background-color: #2176C7}
+.blue{ color: #2176C7}
+.cyanBkg{ background-color: #259286}
+.cyan{ color: #259286}
+.greenBkg{ background-color: #738A05}
+.green{ color: #738A05}
+.whtBkg{ background-color: white}
+.wht{ color: white}
+
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+h2{
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+h3{
+  font-size: 1em;
+}
+
+.bttn{
+  height: 30px;
+  width: 30px;
+}
+.bttnTxt{
+  margin-top: 6px;
+  margin-left: 5px;
+}

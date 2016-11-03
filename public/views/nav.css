@@ -1,0 +1,23 @@
+.navBox{
+  height: 55px;
+  width: 100vw;
+  position:absolute;
+  text-align: right;
+}
+
+#title{
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+#subtitle{
+  margin-top:  1px;
+  margin-right:5px;
+}
+
+#menu{
+  float: right;
+  width:40px;
+  height:40px;
+  margin: 5px 5px 0 15px;
+}

@@ -1,0 +1,32 @@
+<div class="bkgrd darkGrayBkg">
+  <div class="calendarHolder whtBkg">
+    <!-- calendar nav -->
+    <div class="calenderNav">
+      <div ng-click="adjustMonth(-1)"  class="leftArrow"></div>
+      <h2 class="darkBlue">{{titleMonth}}</h2>
+      <div ng-click="adjustMonth(1)" class="rightArrow"></div>
+    </div>
+    <!-- calendar days -->
+    <div class="calendarFiller">
+    <div  class="calendar darkBlueBkg">
+      <div ng-class="{greenBkg : colorSwitch[$index]}" ng-repeat="day in displayMonth track by $index" class="day darkBlueBkg wht">
+        <h2>{{day}}</h2>
+      </div>
+    </div>
+    </div>
+    <!-- calendar key -->
+        <div class="keyHolder">
+          <div class="keyBox greenBkg"></div>
+          <h3 class="green">scheduled</h3>
+          <div class="keyBox darkBlueBkg"></div>
+          <h3 class="darkBlue">not scheduled</h3>
+        </div>
+
+
+  </div>
+
+
+
+
+
+</div>
