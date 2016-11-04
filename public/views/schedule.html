@@ -9,8 +9,8 @@
     <!-- calendar days -->
     <div class="calendarFiller">
     <div  class="calendar darkBlueBkg">
-      <div ng-class="{greenBkg : colorSwitch[$index]}" ng-repeat="day in displayMonth track by $index" class="day darkBlueBkg wht">
-        <h2>{{day}}</h2>
+      <div ng-class="{greenBkg : day.work}" ng-repeat="day in calenderView track by $index" class="day darkBlueBkg wht">
+        <h2>{{day.day}}</h2>
       </div>
     </div>
     </div>

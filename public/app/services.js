@@ -201,11 +201,11 @@ this.assignedHours = [
   },
   {
     "id": 12,
-    "employerId": "",
-    "employeeId": "",
-    "date": "",
-    "start": "",
-    "stop": ""
+    "employerId": 1,
+    "employeeId": 1,
+    "date": '12-2-16',
+    "start": "7:00",
+    "stop": "3:00"
   },
   {
     "id": 13,

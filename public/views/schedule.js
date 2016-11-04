@@ -1,141 +1,165 @@
-angular.module('rosterRooster').controller('schedule', function($scope, rService){
+angular.module('rosterRooster').controller('schedule', function($scope, rService) {
 
-// ========== sets employee id number ==========
+  // ========== sets employee id number ==========
 
-$scope.employeeIdNumber = 1;
+  $scope.employeeIdNumber = 1;
 
-// ========== sets initial date / creates variable to adjust display ==========
+  // ========== sets initial date / creates variable to adjust display ==========
 
-$scope.currentDate = new Date();
-$scope.displayDate = $scope.currentDate;
+  $scope.currentDate = new Date();
 
-// ========== changes the displayDate variable to navigate months ==========
-
-$scope.adjustMonth = function(x){
-  if($scope.displayDate.getDate() > 28)
-    $scope.displayDate.setDay(27);
-  if(($scope.displayDate.getMonth() === 0) && x === (-1)){
-    $scope.displayDate.setMonth(11);
-    $scope.displayDate.setFullYear($scope.displayDate.getFullYear() - 1);
-  }else if (($scope.displayDate.getMonth() === 11) && x === 1) {
-    $scope.displayDate.setMonth(0);
-    $scope.displayDate.setFullYear($scope.displayDate.getFullYear() + 1);
-  }else{
-    $scope.displayDate.setMonth($scope.displayDate.getMonth() + x);
-  }
-  $scope.titleMonth = $scope.prettyMonth();
-  $scope.displayMonth = $scope.calendarMaker();
-  $scope.colorSwitch = $scope.compare();
-};
+  // ========== KEYSTONE VARIABLES, FROM WHICH ALL IS BUILT ==========
 
 
+  $scope.displayMonth = $scope.currentDate.getMonth(); //10
+  $scope.displayDate = $scope.currentDate.getDate(); //4
+  $scope.displayYear = $scope.currentDate.getFullYear(); //2016
 
-// ========== Builds the title ==========
+  // ========== builds parallel arrays for input into object builder ==========
 
-$scope.prettyMonth = function(x){
-  var monthNames = ['JANUARY',	'FEBRUARY',	'MARCH',	'APRIL',	'MAY',	'JUNE',	'JULY',	'AUGUST',	'SEPTEMBER',	'OCTOBER',	'NOVEMBER',	'DECEMBER'];
-  var yearGetter = $scope.displayDate.getFullYear();
-  var monthGetter = $scope.displayDate.getMonth();
-  var prettyDisplay = (monthNames[monthGetter] + " " + yearGetter)
-  return prettyDisplay;
-};
+$scope.calendarBuilder = function(month, day, year, empId){
 
-// ========== makest the variable that holds the title ==========
-
-$scope.titleMonth = $scope.prettyMonth();
-
-
-$scope.previousMonth = function(){
-  var currentMonth = $scope.displayDate.getMonth();
-  if (currentMonth === 0) {
-    return 11;
-  }else{
-    return currentMonth -=1;
-  }
-};
-
-$scope.previousYear = function(){
-return( $scope.displayDate.getFullYear() - 1)
-}
-
-// ========== builds the calendar on the view from scratch ==========
-
-$scope.calendarMaker = function(){
+  var dayBuilder = [];
   var monthBuilder = [];
-  // get month and year information
-  var currentMonth = $scope.displayDate.getMonth();
-  var currentYear = $scope.displayDate.getFullYear();
-  // get first and last days in the current month
-  var firstDay = new Date(currentYear, currentMonth, 1);
+  var yearBuilder = [];
+  // get first and last days in the display month
+  var firstDay = new Date(year, month, 1);
   var firstDayInt = firstDay.getDate();
-  var lastDay = new Date(currentYear, currentMonth + 1, 0);
+  var lastDay = new Date(year, month + 1, 0);
   var lastDayInt = lastDay.getDate();
   // build an array with the days of the month
   for (var i = 1; i <= lastDayInt; i++) {
-    monthBuilder.push(i);
+      dayBuilder.push(i);
+      monthBuilder.push(month);
+      yearBuilder.push(year);
   }
 
-  //Get last day of previous month
-  var previousMonth = $scope.previousMonth();
-  var xYear = currentYear;
-    if(previousMonth === 11){
-      var xYear = $scope.previousYear();}
-  var previousLastDay = new Date(xYear, previousMonth + 1, 0);
-  var previousLastDayInt = previousLastDay.getDate();
+  //Get previous month
+  var pMonth;
+  var pYear;
+  if (month === 0) {
+    pMonth = 11;
+    pYear = (year - 1);
+  }else{
+    pMonth = (month - 1)
+    pYear = year;
+  };
 
-  //Fill out front end of array with respective days from last month
+  //get next month
+
+  var nMonth;
+  var nYear;
+  if(month === 11){
+    nMonth = 0
+    nYear = (year + 1)
+  }else{
+    nMonth = (month + 1);
+    nYear = year;
+  };
+
+  //get last day of previous month
+
+  var pLastDay = new Date(pYear, nMonth + 1, 0);
+  var pLastDayInit = pLastDay.getDate();
+
+  // add to front of array with days from last month
+
   var firstDayOfWeek = firstDay.getDay();
-  if(firstDayOfWeek != 0){
-  for (var j = previousLastDayInt; j > (previousLastDayInt - firstDayOfWeek); j--) {
-    monthBuilder.unshift(j);
-    }
-  }
-  //add days to the end of the month to fill out calendar
-  for (var k = 1; k <= (35 - (lastDayInt + firstDayOfWeek)); k++) {
-    monthBuilder.push(k);
-  }
-  return monthBuilder;
-}
-
-// ========== variable that holds calendar array for ng repeat ==========
-
-$scope.displayMonth = $scope.calendarMaker();
-
-// ========== finds which days the employee works ==========
-$scope.assignedHours = rService.assignedHours;
-
-$scope.hourIndicator = function(x){
-  var sorter = $scope.assignedHours;
-  var comparisonArray = [];
-  for (var i = 0; i < sorter.length; i++) {
-    var tempArray = sorter[i].date.split("-");
-    if ((sorter[i].employeeId === x) && (tempArray[0] = ($scope.displayDate.getMonth() + 1))){
-      comparisonArray.push(tempArray[1]);
-    }
-  }
-
-  return comparisonArray;
-};
-
-//invokes the function and sets the result to a variable
-$scope.comparisonArr = $scope.hourIndicator($scope.employeeIdNumber);
-
-// ========== compares current calendar with hour indicator array ==========
-$scope.compare = function(){
-  var newComparisonArray = [];
-  for (var i = 0; i < $scope.displayMonth.length; i++) {
-    for (var j = 0; j < $scope.comparisonArr.length; j++) {
-      if($scope.displayMonth[i] == $scope.comparisonArr[j] ){
-        newComparisonArray.push(true);
+  if (firstDayOfWeek !== 0) {
+      for (var j = pLastDayInit; j > (pLastDayInit - firstDayOfWeek); j--) {
+          dayBuilder.unshift(j);
+          monthBuilder.unshift(pMonth);
+          yearBuilder.unshift(pYear);
       }
-    }
-    if (!newComparisonArray[i]){
-      newComparisonArray.push(false);
-    }
-  }
-  return newComparisonArray;
+  };
+
+  // fill out rest of array with days from next month
+  for (var k = 1; k <= (35 - (lastDayInt + firstDayOfWeek)); k++) {
+      dayBuilder.push(k);
+      monthBuilder.push(nMonth);
+      yearBuilder.push(nYear);
+  };
+
+    // ========== makes the calendar object ==========
+    var finalArray = [];
+
+    for (var l = 0; l < dayBuilder.length; l++) {
+        var x = new Object();
+        x.day = dayBuilder[l];
+        x.month = monthBuilder[l];
+        x.year = yearBuilder[l];
+        finalArray.push(x);
+    };
+
+    // ========== compares calendar object wi database ==========
+
+
+    var assignedHours = rService.assignedHours;
+
+
+    for (var m = 0; m < finalArray.length; m++) {
+      for (var n = 0; n < assignedHours.length; n++) {
+          var dateParser = assignedHours[n].date.split("-");
+          if((assignedHours[n].employeeId === empId )
+              && ((dateParser[0] - 1) == finalArray[m].month)
+              && (dateParser[1] == finalArray[m].day)
+              && (("20" + dateParser[2]) == finalArray[m].year)
+            ){
+            finalArray[m].work = true;
+          }
+      }
+    };
+
+    // console.log(finalArray);
+    return finalArray;
+
 };
 
-$scope.colorSwitch = $scope.compare();
+// ========== invoke the function, assigns object to variable ==========
+
+$scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+
+
+// ========== changes the currentDate variable to navigate months ==========
+
+$scope.adjustMonth = function(x) {
+    if ($scope.displayDate > 28)
+        $scope.currentDate.setDay(27);
+    if (($scope.displayMonth  === 0) && x === (-1)) {
+        $scope.currentDate.setMonth(11);
+        $scope.currentDate.setFullYear($scope.displayYear - 1);
+    } else if (($scope.displayMonth === 11) && x === 1) {
+        $scope.currentDate.setMonth(0);
+        $scope.currentDate.setFullYear($scope.displayYear + 1);
+    } else {
+        $scope.currentDate.setMonth($scope.displayMonth + x);
+    }
+
+    $scope.displayMonth = $scope.currentDate.getMonth(); //10
+    $scope.displayDate = $scope.currentDate.getDate(); //4
+    $scope.displayYear = $scope.currentDate.getFullYear(); //2016
+
+    $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+    $scope.titleMonth = $scope.titleChanger();
+};
+
+// ========== changes the currentDate variable to navigate months ==========
+
+$scope.titleChanger = function(){
+  var monthNames = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+  var prettyDisplay = (monthNames[$scope.displayMonth] + " " + $scope.displayYear);
+  return prettyDisplay;
+};
+
+//invoke the function
+
+$scope.titleMonth = $scope.titleChanger();
+
+
+
+
+
+
+
 
 });
