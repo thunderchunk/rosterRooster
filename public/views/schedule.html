@@ -1,4 +1,4 @@
-<div class="bkgrd darkGrayBkg">
+<div class="bkgrd">
   <div class="calendarHolder whtBkg">
     <!-- calendar nav -->
     <div class="calenderNav">
@@ -9,7 +9,7 @@
     <!-- calendar days -->
     <div class="calendarFiller">
     <div  class="calendar darkBlueBkg">
-      <div ng-class="{greenBkg : day.work}" ng-repeat="day in calenderView track by $index" class="day darkBlueBkg wht">
+      <div ng-class="{greenBkg : day.work,  darkGray : day.notCurrentMonth}" ng-repeat="day in calenderView track by $index" class="day darkBlueBkg wht">
         <h2>{{day.day}}</h2>
       </div>
     </div>

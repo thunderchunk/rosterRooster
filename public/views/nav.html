@@ -1,5 +1,49 @@
-<div class="navBox wht darkBlueBkg">
-  <img id="menu" src="images/rrfoot@2x.png" alt="menu" />
-  <h1 id="title">ROSTER ROOSTER</h1>
-  <h3 class="blue" id="subtitle">WELCOME</h3>
+<div ng-mouseenter="" class="navBox wht darkBlueBkg">
+    <img ng-click="adminMenuToggler()" id="menuLogo" src="./images/rrfoot@2x.png" alt="menu" />
+    <h1 id="title">ROSTER ROOSTER</h1>
+    <h3 class="blue" id="subtitle">WELCOME</h3>
+</div>
+<!-- user menu -->
+<div ng-click="userMenuTogglerOff()" ng-show="flipper" class="menuExiter whtBkg">
+</div>
+
+<div ng-show="flipper" id="userMenu" class="darkBlueBkg wht">
+    <div class="menuItem " ui-sref="schedule" ng-click="userMenuTogglerOff()">
+        <h2 class="menuText" ui-sref="schedule">SCHEDULE</h2>
+        <img class="menuIcon" src="./images/Schedule.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="account" ng-click="userMenuTogglerOff()">
+        <h2 class="menuText">ACCOUNT</h2>
+        <img class="menuIcon" src="./images/account.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="home" ng-click="userMenuTogglerOff()">
+        <h2 class="menuText">LOG OUT</h2>
+        <img class="menuIcon" src="./images/cancel.svg" alt="schedule" />
+    </div>
+</div>
+
+<div ng-click="userMenuTogglerOff()" ng-show="flipper" class="menuExiter whtBkg">
+</div>
+<!-- admin menu -->
+<div ng-show="adminFlipper" id="userMenu" class="darkBlueBkg wht">
+    <div class="menuItem " ui-sref="schedule" ng-click="adminMenuTogglerOff()">
+        <h2 class="menuText" ui-sref="schedule">SCHEDULE</h2>
+        <img class="menuIcon" src="./images/Schedule.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="account" ng-click="adminMenuTogglerOff()">
+        <h2 class="menuText">ACCOUNT</h2>
+        <img class="menuIcon" src="./images/account.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="setSchedule" ng-click="adminMenuTogglerOff()">
+        <h2 class="menuText">SET SCHEDULE</h2>
+        <img class="menuIcon" src="./images/setschedule.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="employee" ng-click="adminMenuTogglerOff()">
+        <h2 class="menuText">EMPLOYEES</h2>
+        <img class="menuIcon" src="./images/employees.svg" alt="schedule" />
+    </div>
+    <div class="menuItem" ui-sref="home" ng-click="adminMenuTogglerOff()">
+        <h2 class="menuText">LOG OUT</h2>
+        <img class="menuIcon" src="./images/cancel.svg" alt="schedule" />
+    </div>
 </div>

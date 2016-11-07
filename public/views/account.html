@@ -1,0 +1,29 @@
+<div class="accountBox">
+  <div class="calendarHolder whtBkg">
+    <!-- calendar nav -->
+    <div class="calenderNav">
+      <div ng-click="adjustMonth(-1)"  class="leftArrow"></div>
+      <h2 class="darkBlue">{{titleMonth}}</h2>
+      <div ng-click="adjustMonth(1)" class="rightArrow"></div>
+    </div>
+    <!-- calendar days -->
+    <div class="calendarFiller">
+    <div  class="calendar darkBlueBkg">
+      <div ng-class="{greenBkg : day.work, darkGray : day.notCurrentMonth}" ng-repeat="day in calenderView track by $index" class="day darkBlueBkg wht">
+        <h2>{{day.day}}</h2>
+      </div>
+    </div>
+    </div>
+    <!-- calendar key -->
+        <div class="keyHolder">
+          <div class="keyBox greenBkg"></div>
+          <h3 class="green">available</h3>
+          <div class="keyBox darkBlueBkg"></div>
+          <h3 class="darkBlue">not available</h3>
+        </div>
+
+
+  </div>
+
+  
+</div>

@@ -1,95 +1,103 @@
 angular.module('rosterRooster').controller('schedule', function($scope, rService) {
 
-  // ========== sets employee id number ==========
+  
+    // ========== sets employee id number ==========
 
-  $scope.employeeIdNumber = 1;
+    $scope.employeeIdNumber = 1;
+    $scope.employerIdNumber = 1;
 
-  // ========== sets initial date / creates variable to adjust display ==========
+    // ========== sets initial date / creates variable to adjust display ==========
 
-  $scope.currentDate = new Date();
+    $scope.currentDate = new Date();
 
-  // ========== KEYSTONE VARIABLES, FROM WHICH ALL IS BUILT ==========
+    // ========== KEYSTONE VARIABLES, FROM WHICH ALL IS BUILT ==========
 
 
-  $scope.displayMonth = $scope.currentDate.getMonth(); //10
-  $scope.displayDate = $scope.currentDate.getDate(); //4
-  $scope.displayYear = $scope.currentDate.getFullYear(); //2016
+    $scope.displayMonth = $scope.currentDate.getMonth(); //10
+    $scope.displayDate = $scope.currentDate.getDate(); //4
+    $scope.displayYear = $scope.currentDate.getFullYear(); //2016
 
-  // ========== builds parallel arrays for input into object builder ==========
+    // ========== builds parallel arrays for input into object builder ==========
 
-$scope.calendarBuilder = function(month, day, year, empId){
+  $scope.calendarBuilder = function(month, day, year, empId){
 
-  var dayBuilder = [];
-  var monthBuilder = [];
-  var yearBuilder = [];
-  // get first and last days in the display month
-  var firstDay = new Date(year, month, 1);
-  var firstDayInt = firstDay.getDate();
-  var lastDay = new Date(year, month + 1, 0);
-  var lastDayInt = lastDay.getDate();
-  // build an array with the days of the month
-  for (var i = 1; i <= lastDayInt; i++) {
-      dayBuilder.push(i);
-      monthBuilder.push(month);
-      yearBuilder.push(year);
-  }
+    var dayBuilder = [];
+    var monthBuilder = [];
+    var yearBuilder = [];
+    var textToggler = [];
+    // get first and last days in the display month
+    var firstDay = new Date(year, month, 1);
+    var firstDayInt = firstDay.getDate();
+    var lastDay = new Date(year, month + 1, 0);
+    var lastDayInt = lastDay.getDate();
+    // build an array with the days of the month
+    for (var i = 1; i <= lastDayInt; i++) {
+        dayBuilder.push(i);
+        monthBuilder.push(month);
+        yearBuilder.push(year);
+        textToggler.push(false);
+    }
 
-  //Get previous month
-  var pMonth;
-  var pYear;
-  if (month === 0) {
-    pMonth = 11;
-    pYear = (year - 1);
-  }else{
-    pMonth = (month - 1)
-    pYear = year;
-  };
-
-  //get next month
-
-  var nMonth;
-  var nYear;
-  if(month === 11){
-    nMonth = 0
-    nYear = (year + 1)
-  }else{
-    nMonth = (month + 1);
-    nYear = year;
-  };
-
-  //get last day of previous month
-
-  var pLastDay = new Date(pYear, nMonth + 1, 0);
-  var pLastDayInit = pLastDay.getDate();
-
-  // add to front of array with days from last month
-
-  var firstDayOfWeek = firstDay.getDay();
-  if (firstDayOfWeek !== 0) {
-      for (var j = pLastDayInit; j > (pLastDayInit - firstDayOfWeek); j--) {
-          dayBuilder.unshift(j);
-          monthBuilder.unshift(pMonth);
-          yearBuilder.unshift(pYear);
-      }
-  };
-
-  // fill out rest of array with days from next month
-  for (var k = 1; k <= (35 - (lastDayInt + firstDayOfWeek)); k++) {
-      dayBuilder.push(k);
-      monthBuilder.push(nMonth);
-      yearBuilder.push(nYear);
-  };
-
-    // ========== makes the calendar object ==========
-    var finalArray = [];
-
-    for (var l = 0; l < dayBuilder.length; l++) {
-        var x = new Object();
-        x.day = dayBuilder[l];
-        x.month = monthBuilder[l];
-        x.year = yearBuilder[l];
-        finalArray.push(x);
+    //Get previous month
+    var pMonth;
+    var pYear;
+    if (month === 0) {
+      pMonth = 11;
+      pYear = (year - 1);
+    }else{
+      pMonth = (month - 1)
+      pYear = year;
     };
+
+    //get next month
+
+    var nMonth;
+    var nYear;
+    if(month === 11){
+      nMonth = 0
+      nYear = (year + 1)
+    }else{
+      nMonth = (month + 1);
+      nYear = year;
+    };
+
+    //get last day of previous month
+
+    var pLastDay = new Date(pYear, nMonth + 1, 0);
+    var pLastDayInit = pLastDay.getDate();
+
+    // add to front of array with days from last month
+
+    var firstDayOfWeek = firstDay.getDay();
+    if (firstDayOfWeek !== 0) {
+        for (var j = pLastDayInit; j > (pLastDayInit - firstDayOfWeek); j--) {
+            dayBuilder.unshift(j);
+            monthBuilder.unshift(pMonth);
+            yearBuilder.unshift(pYear);
+            textToggler.unshift(true);
+        }
+    };
+
+    // fill out rest of array with days from next month
+    for (var k = 1; k <= (35 - (lastDayInt + firstDayOfWeek)); k++) {
+        dayBuilder.push(k);
+        monthBuilder.push(nMonth);
+        yearBuilder.push(nYear);
+        textToggler.push(true)
+    };
+
+      // ========== makes the calendar object ==========
+      var finalArray = [];
+
+      for (var l = 0; l < dayBuilder.length; l++) {
+          var x = new Object();
+          x.day = dayBuilder[l];
+          x.month = monthBuilder[l];
+          x.year = yearBuilder[l];
+          x.notCurrentMonth = textToggler[l];
+          finalArray.push(x);
+        
+      };
 
     // ========== compares calendar object wi database ==========
 

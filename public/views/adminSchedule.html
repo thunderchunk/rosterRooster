@@ -1,0 +1,115 @@
+<div class="bkgrd absolute">
+    <div class="calendarHolder whtBkg">
+        <!-- calendar nav -->
+        <div class="calenderNav">
+            <div ng-click="adjustMonth(-1)" class="leftArrow"></div>
+            <h2 class="darkBlue">{{titleMonth}}</h2>
+            <div ng-click="adjustMonth(1)" class="rightArrow"></div>
+        </div>
+        <!-- calendar days -->
+        <div class="calendarFiller">
+            <div class="calendar darkBlueBkg">
+                <div class="day darkBlueBkg wht" 
+                ng-class="{greenBkg : day.published, yellowBkg : day.edited, darkGray : day.notCurrentMonth}" 
+                ng-repeat="day in calenderView track by $index" 
+                ng-click="dayEditorOn($index)"
+                >
+                    <h2>{{day.day}}</h2>
+                </div>
+            </div>
+        </div>
+        <!-- calendar key -->
+        <div class="keyHolder">
+            <div class="keyBox greenBkg"></div>
+            <h3 class="green">published</h3>
+            <div class="keyBox yellowBkg"></div>
+            <h3 class="yellow">edited</h3>
+            <div class="keyBox darkBlueBkg"></div>
+            <h3 class="darkBlue">unedited</h3>
+        </div>
+    </div>
+
+
+
+    <!-- DAY EDITOR -->
+    <div class="dayEditor whtBkg" ng-show="dayFlipper">
+
+        <!-- background grid -->
+        <div class="grid " >
+            <div class="counter" ng-repeat="times in timeArray">
+                <h3 class="counterText">{{times}}</h3>
+            </div>
+            <div class="spacer"></div>
+        </div>
+        <!-- end of grid -->
+        <!-- start of time display -->
+        <div class="column1" >
+          <div id="unavBar1a" class="unavailable darkBlueBkg notAvailable" ng-show="column1show"></div>
+          <div id="bar1" class="bar greenBkg" ng-show="barShow1">
+            <h3 class="verticaltext wht">{{barEmployee1.firstName}} {{barEmployee1.lastName}} <br> <span class="darkBlue">7AM to 2pm</span></h3>
+          </div>
+          <div id="unavBar1b" class="unavailable darkBlueBkg notAvailable" ng-show="column1show"></div>
+        </div>
+        
+    </div>
+  
+    <!-- bottom tab -->
+    <div class="bottomTab whtBkg" ng-show="dayFlipper">
+
+        <div class="currentEmployee">
+          <div class="employeeHolder">
+            
+            <div class="employeeButton redBkg" ng-click="addToGrid()">
+            <img class="addButton1" src="./images/add2.svg" alt="add Selected Employee" />
+            </div>
+            <div class="employeeInfo">
+                <h3 class = "darkBlue">{{pickedEmployee.firstName}} {{pickedEmployee.lastName}}</h3>
+                <h5 class="subDetail darkBlue">Max  {{pickedEmployee.weeklyMax}} - Min  {{pickedEmployee.weeklyMin}}</h5>
+              
+            </div>
+            </div>
+            <div class="employeeHolder textRight" ng-click="activeEeditor()">
+                <h4 class="blue">Other <br> Employee</h4>
+                <img class="addButton2" src="./images/add.svg" alt="add Employee" />
+            </div>
+        </div>
+        
+<!-- toolbar -->
+        <div class="bottomBar whtBkg" >
+      
+          <div class="tool" ng-click="saveDay()">
+            <img class="toolIcon" src="./images/save.svg" alt="save" />
+            <h3 class = "yellow">save</h3>
+          </div>
+          <div class="tool" ng-click="publishDay()">
+            <img class="toolIcon" src="./images/publish.svg" alt="save" />
+            <h3 class = "green">publish</h3>
+          </div>
+          <div class="tool" ng-click="dayEditorOff()">
+            <img class="toolIcon" src="./images/cancel.svg" alt="save" />
+            <h3 class="red" >cancel</h3>
+          </div>
+        </div>
+    </div>
+
+
+<!-- employeePicker -->
+<div class="employeePicker whtBkg" ng-show="employeeEditorToggler">
+  <!-- STYLES SHARED FROM EMPLOYEE.CSS -->
+  <div class="employeeBox" ng-repeat="x in employeeLister() track by $index">
+      <div class="selectorBox greenBkg" ng-click="employeePick($index)"></div>
+      <div class="textHolder">
+          <h2 class="empName darkBlue">{{x.firstName}} {{x.lastName}}</h2>
+          <div class="subtextHolder">
+              <h4 class="hours darkGray">Min. Hrs. : {{x.weeklyMin}}</h4>
+              <h4 class="hours darkGray">Max. Hrs. : {{x.weeklyMax}}</h4>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+</div>

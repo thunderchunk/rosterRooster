@@ -1,8 +1,9 @@
 .navBox{
   height: 55px;
   width: 100vw;
-  position:absolute;
+  position:fixed;
   text-align: right;
+  z-index: 4;
 }
 
 #title{
@@ -15,9 +16,48 @@
   margin-right:5px;
 }
 
-#menu{
+#menuLogo{
   float: right;
   width:40px;
   height:40px;
   margin: 5px 5px 0 15px;
 }
+
+#userMenu{
+  width: 250px;
+  z-index: 5;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 20px 20px 20px 20px;
+  z-index: 4;
+}
+
+.menuExiter{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 3;
+  opacity: .2;
+  
+}
+
+.menuIcon{
+  max-height: 25px;
+  max-width: 30px;
+  
+}
+
+.menuItem{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.menuText{
+  padding-top: 3px;
+}
+
+
+

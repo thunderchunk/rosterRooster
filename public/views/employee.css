@@ -1,0 +1,183 @@
+
+.employeeBox{
+  width: 100vw;
+  height: 40px;
+  margin: 15px 0 15px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.adderBox{
+  width: 100vw;
+  height: 40px;
+  margin: 15px 0 15px 0;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.addNew{
+  width: 30px;
+  height: 30px;
+  margin: 0 15px 0 15px;
+}
+
+.addTxt{
+  margin-top: 6px
+}
+
+.selectorBox{
+  width: 40px;
+  height: 40px;
+  margin: 0 15px 0 15px;
+}
+
+.selectorBox:hover{
+  background-color: #0A2933;
+}
+
+.textHolder{
+  display: flex;
+  flex-direction: column;
+}
+.editTag{
+  margin: 8px 9px 0 0;
+  }
+
+.editTag:hover{
+  color: #0A2933;
+}
+  
+.hours{
+  margin: 8px 9px;
+}
+  
+.subtextHolder{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.employeeEditor{
+  width: 100vw;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  padding-bottom: 100px;
+}
+  
+.eToolbar{
+  height: 40px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 4;
+}
+
+.eTool{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.eToolImg{
+  width: 20px;
+
+}
+  
+.eToolTxt{
+  margin: 12px;
+}  
+
+.currentEmployeeBox{
+  width: 100vw;
+  z-index: 4;
+}
+
+.singleInputHolder{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px 0 10px 0;
+  padding-right: 20px;
+}
+
+.multiInputHolder{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px 0 10px 0;
+  padding-right: 20px;
+}
+
+.basicInput{
+  margin-left: 15px;
+  padding: 0 0 0 10px;
+  border: 0;
+}
+
+.bigInput{
+  width: 150px;
+  height: 30px;
+}
+
+.smallInput{
+  width: 40px;
+  height: 30px;
+}
+
+.veryBigInput{
+  width: 200px;
+  height: 30px;
+}
+
+.basicInput:focus{
+    outline: 0 none;
+}
+
+.inputDescription{
+  margin: 5px;
+}
+.linebreak{
+  width: 100vw;
+  border-top: 1px solid lightgrey;
+}
+
+.customButtonHolder{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.yesBtn{
+  background-color: #738A05;
+}
+  
+.noBtn{
+  background-color: #D11C24;
+}
+.dayHolder{
+  width: 100%;
+  padding-top: 20px;
+}
+.dayTitle{
+  text-align: center;
+}
+
+.dayAdderBtn{
+  height: 20px;
+  width: 20px;
+  margin: 0 0 0 15px;
+}
+
+.allDay{
+  background-color: #2176C7;
+}
+
+
+  
