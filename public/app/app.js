@@ -34,5 +34,21 @@ angular.module('rosterRooster', ['ui.router'])
         controller: 'schedule'
 
       })
+      
+      .state('admin', {
+        url: '/admin',
+        templateUrl: './views/admin.html',
+        controller: 'admin'
+
+      })
+      
+      .state('new', {
+        url: '/new',
+        templateUrl: './views/new.html',
+        controller: 'new'
+
+      })
+      
+      
 
 })

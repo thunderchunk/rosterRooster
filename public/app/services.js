@@ -37,51 +37,7 @@ this.masterUsers = [
     "admin": false,
     "email": "larpFan12@delaware.gov"
   },
-  {
-    "id": 5,
-    "userName": "Flint",
-    "password": 123,
-    "employerId": 1,
-    "employeeId": 5,
-    "admin": false,
-    "email": "stargateFan69@hotmail.com"
-  },
-  {
-    "id": 6,
-    "userName": "Slade",
-    "password": 123,
-    "employerId": 1,
-    "employeeId": 6,
-    "admin": false,
-    "email": "burntPopcorn@ninjas.com"
-  },
-  {
-    "id": 7,
-    "userName": "Brick",
-    "password": 123,
-    "employerId": 1,
-    "employeeId": 7,
-    "admin": false,
-    "email": "fartHugger@ponies.com"
-  },
-  {
-    "id": 8,
-    "userName": "Roll",
-    "password": 123,
-    "employerId": 1,
-    "employeeId": 8,
-    "admin": false,
-    "email": "NCISisTheBest@oldpeople.com"
-  },
-  {
-    "id": 9,
-    "userName": "Dirk",
-    "password": 123,
-    "employerId": 1,
-    "employeeId": 9,
-    "admin": false,
-    "email": "poopTwizzler@aarp.com"
-  }
+
 ]
 
 this.employers=
@@ -161,7 +117,7 @@ this.employeeAvailable = [
     "stStop": "",
     "sdStart": "",
     "sdStop": ""
-  },
+  }
 
 ];
 

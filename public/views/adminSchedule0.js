@@ -192,15 +192,14 @@ $scope.titleChanger = function(){
 $scope.titleMonth = $scope.titleChanger();
 
 
-// =========================================================================
+
 // ========================== DAY SCHEDULER ================================
 // =========================================================================
 
 
-// CONSTRUCTS DAY SCHEDULER PIECES
+//toggles DAY SCHEDULER and feeds back day index to variable
 $scope.dayFlipper = false;
 
-// Holds current date
 $scope.daySelected ={};
 
 $scope.dayEditorOn = function($index){
