@@ -12,22 +12,17 @@
     
     <!-- BAR 1 -->
     <div id="{{bar.id}}" class="column" ng-repeat="bar in barList">
-      <div id="{{bar.s1id}}" class="unavailable darkBlueBkg notAvailable topUnav" ng-show="{{bar.shadowShow}}"></div>
-      <div id="{{bar.barId}}" class="bar " ng-show="{{bar.barShow}}">
-        <h3 class="verticaltext wht">{{bar.firstName}} {{bar.lastName}} 
-          <br> <span class="darkBlue">from {{bar.start}} to {{bar.stop}}</span></h3>
+      <bars></bars>
       </div>
-      <div id="{{bar.barId}}" class="unavailable darkBlueBkg notAvailable" ng-show="{{bar.shadowShow}}"></div>
-    </div>
     <!-- ===================start of time display================== -->
 </div>
 <!-- bottom tab -->
 <div class="bottomTab whtBkg" >
 
 <div class="currentEmployee">
-    <div class="employeeHolder" >
+    <div class="employeeHolder" ng-show="boxToggler">
 
-        <div class="employeeButton redBkg" ng-click="timeEditor()">
+        <div class="employeeButton redBkg" ng-click="startStopTime() " >
         </div>
         <div class="employeeInfo">
             <h3 class="darkBlue">{{ePick.firstName}} {{ePick.lastName}}</h3>
@@ -46,11 +41,11 @@
 
 <div class="bottomBar whtBkg">
 
-    <div class="tool" ng-click="saveDay()">
+    <div class="tool" ng-click="saveDay()" ui-sref="setSchedule">
         <img class="toolIcon" src="./images/save.svg" alt="save" />
         <h3 class="yellow">save</h3>
     </div>
-    <div class="tool" ng-click="publishDay()">
+    <div class="tool" ng-click="publishDay()" ui-sref="setSchedule">
         <img class="toolIcon" src="./images/publish.svg" alt="save" />
         <h3 class="green">publish</h3>
     </div>
@@ -81,7 +76,7 @@
             <img class="toolIcon" src="./images/cancel.svg" alt="cancel" />
             <h3 class="red">cancel</h3>
         </div>
-        <div class="buffer" ng-click="submitTime()">
+        <div class="buffer" ng-click="returnTime()">
             <img class="toolIcon" src="./images/add.svg" alt="submit" />
             <h3 class="blue">submit</h3>
         </div>
