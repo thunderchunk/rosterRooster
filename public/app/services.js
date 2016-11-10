@@ -1,5 +1,8 @@
 angular.module('rosterRooster').service('rService', function(){
 
+this.yearHolder;
+this.monthHolder;
+
 this.masterUsers = [
   {
     "id": 1,
@@ -117,7 +120,64 @@ this.employeeAvailable = [
     "stStop": "",
     "sdStart": "",
     "sdStop": ""
-  }
+  },
+  {
+    "id": 2,
+    "employeeId": 2,
+    "overtime": false,
+    "mStart": '7:00',
+    "mStop": '17:00',
+    "tuStart": '7:00',
+    "tuStop": '17:00',
+    "wStart": '7:00',
+    "wStop": '17:00',
+    "thStart":'7:00',
+    "thStop": '17:00',
+    "fStart": '7:00',
+    "fStop": '17:00',
+    "stStart": "",
+    "stStop": "",
+    "sdStart": "",
+    "sdStop": ""
+  },
+  {
+    "id": 3,
+    "employeeId": 3,
+    "overtime": false,
+    "mStart": '7:00',
+    "mStop": '17:00',
+    "tuStart": '7:00',
+    "tuStop": '17:00',
+    "wStart": '7:00',
+    "wStop": '17:00',
+    "thStart":'7:00',
+    "thStop": '17:00',
+    "fStart": '7:00',
+    "fStop": '17:00',
+    "stStart": "",
+    "stStop": "",
+    "sdStart": "",
+    "sdStop": ""
+  },
+  {
+    "id": 4,
+    "employeeId": 4,
+    "overtime": false,
+    "mStart": '7:00',
+    "mStop": '17:00',
+    "tuStart": '7:00',
+    "tuStop": '17:00',
+    "wStart": '7:00',
+    "wStop": '17:00',
+    "thStart":'7:00',
+    "thStop": '17:00',
+    "fStart": '7:00',
+    "fStop": '17:00',
+    "stStart": "",
+    "stStop": "",
+    "sdStart": "",
+    "sdStop": ""
+  },
 
 ];
 

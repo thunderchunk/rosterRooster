@@ -1,0 +1,182 @@
+<div class="employeeEditor whtBkg">
+    <form ng-submit="saveAndCloseNew()" class="currentEmployeeBox topPadding">
+
+        <!-- first tier of info xw-->
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">First Name</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="fName" ng-model="currentEmployee.firstName">
+        </div>
+
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Last Name</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="lName" ng-model="currentEmployee.lastName">
+        </div>
+
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">E-Mail</h3>
+            <input class="basicInput veryBigInput darkBlueBkg wht" type="text" name="eMail" ng-model="userData.email">
+        </div>
+
+        <div class="multiInputHolder">
+            <h3 class="inputDescription darkBlue">Middle Initial</h3>
+            <input class="basicInput smallInput darkBlueBkg wht" type="text" name="mInitial" ng-model="currentEmployee.mInitial">
+        </div>
+        <!-- end first section -->
+        <div class="linebreak"> </div>
+        <!-- start password / user section -->
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">User Name</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="uName" ng-model="userData.userName">
+        </div>
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Password</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="pWord" ng-model="userData.password">
+        </div>
+        <!-- end password section -->
+        <div class="linebreak"> </div>
+        <!-- start overtime section -->
+        <div class="multiInputHolder">
+            <h3 class="inputDescription darkBlue">Available for Overtime? - yes</h3>
+            <div id="yes" class="customButtonHolder darkBlueBkg" ng-click="otYes()" ng-class="{yesBtn:otChecky}"></div>
+            <h3 class="inputDescription darkBlue">no</h3>
+            <div id="no" class="customButtonHolder darkBlueBkg" ng-click="otNo()" ng-class="{noBtn:otCheckn}"></div>
+        </div>
+        <!-- end overtime section -->
+        <div class="linebreak"> </div>
+
+        <!-- ENTER DAY INFORMATION -->
+        <div class="dayHolder">
+            <!-- monday -->
+            <h2 class="dayTitle darkBlue">MONDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSta" ng-model="availHours.mStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSto" ng-model="availHours.mStop">
+            </div>
+        </div>
+
+        <!-- apply to every day or weekdays -->
+
+        <!-- every day -->
+        <div class="multiInputHolder">
+            <h3 class="inputDescription darkBlue">Apply to all days</h3>
+            <div class="customButtonHolder darkBlueBkg" ng-click="allDays()" ng-class="{blueBkg:allYes}"></div>
+            <!-- weekdays -->
+            <h3 class="inputDescription darkBlue">Weekdays</h3>
+            <div class="customButtonHolder darkBlueBkg" ng-click="weekdays()" ng-class="{cyanBkg:weekYes}"></div>
+            <!-- show all days -->
+            <img ng-click="showRest()" class="dayAdderBtn" src="./images/add.svg" alt="Add Days" />
+        </div>
+
+
+        <!-- the rest of the days -->
+
+
+
+        <div class="restOfDays" ng-show="showRestDays">
+            <!-- tuesday -->
+
+            <h2 class="dayTitle darkBlue">TUESDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSta" ng-model="availHours.tuStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSto" ng-model="availHours.tuStop">
+            </div>
+
+            <!-- wednesday -->
+
+            <h2 class="dayTitle darkBlue">WEDNESDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSta" ng-model="availHours.wStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSto" ng-model="availHours.wStop">
+            </div>
+
+
+            <!-- thursday -->
+
+            <h2 class="dayTitle darkBlue">THURSDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSta" ng-model="availHours.thStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSto" ng-model="availHours.thStop">
+            </div>
+
+            <!-- friday -->
+
+            <h2 class="dayTitle darkBlue">FRIDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSta" ng-model="availHours.fStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSto" ng-model="availHours.fStop">
+            </div>
+
+            <!-- saturday -->
+
+            <h2 class="dayTitle darkBlue">SATURDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSta" ng-model="availHours.stStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSto" ng-model="availHours.stStop">
+            </div>
+
+            <!-- sunday -->
+
+            <h2 class="dayTitle darkBlue">SUNDAY</h2>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Start</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSta" ng-model="availHours.sdStart">
+            </div>
+
+            <div class="singleInputHolder">
+                <h3 class="inputDescription darkBlue">Stop</h3>
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSto" ng-model="availHours.sdStop">
+            </div>
+        </div>
+        <!-- =============  TOOLBAR   ============== -->
+
+        <div class="eToolbar whtBkg">
+            <div ng-click="saveAndCloseNew()" ui-sref="employee"  class="eTool">
+                <img class="eToolImg" src="./images/publish.svg" alt="save" />
+                <h3 class="eToolTxt green">Save</h3>
+            </div>
+            <div ng-click="cancelNewEmp()" ui-sref="employee"  class="eTool">
+                <img class="eToolImg" src="./images/cancel.svg" alt="cancel" />
+                <h3 class="eToolTxt red">Cancel</h3>
+            </div>
+        </div>
+
+
+    </form>
+</div>

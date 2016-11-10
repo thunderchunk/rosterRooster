@@ -1,4 +1,4 @@
-angular.module('rosterRooster').controller('adminSchedule', function($scope,rService){
+angular.module('rosterRooster').controller('adminSchedule', function($scope, rService, $stateParams){
 
   // ========== sets employee id number ==========
 
@@ -191,6 +191,10 @@ $scope.titleChanger = function(){
 //invoke the function
 $scope.titleMonth = $scope.titleChanger();
 
+$scope.timeSender = function(){
+  rService.monthHolder = $scope.displayMonth; 
+  rService.yearHolder = $scope.displayYear;
+}
 
 // =========================================================================
 // ========================== DAY SCHEDULER ================================

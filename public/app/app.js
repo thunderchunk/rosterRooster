@@ -36,7 +36,7 @@ angular.module('rosterRooster', ['ui.router'])
       })
       
       .state('admin', {
-        url: '/admin',
+        url: '/admin/:id',
         templateUrl: './views/admin.html',
         controller: 'admin'
 
@@ -46,6 +46,13 @@ angular.module('rosterRooster', ['ui.router'])
         url: '/new',
         templateUrl: './views/new.html',
         controller: 'new'
+
+      })
+      
+      .state('builder', {
+        url: '/builder/:id',
+        templateUrl: './views/builder.html',
+        controller: 'builder'
 
       })
       

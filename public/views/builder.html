@@ -1,0 +1,112 @@
+<!-- DAY EDITOR -->
+<div class="dayEditor whtBkg">
+
+    <!-- background grid -->
+    <div class="grid " >
+        <div class="counter" ng-repeat="times in timeArray">
+            <h3 class="counterText">{{times}}</h3>
+        </div>
+        <div class="spacer"></div>
+    </div>
+    <!-- end of grid -->
+    
+    <!-- BAR 1 -->
+    <div id="{{bar.id}}" class="column" ng-repeat="bar in barList">
+      <div id="{{bar.s1id}}" class="unavailable darkBlueBkg notAvailable topUnav" ng-show="{{bar.shadowShow}}"></div>
+      <div id="{{bar.barId}}" class="bar " ng-show="{{bar.barShow}}">
+        <h3 class="verticaltext wht">{{bar.firstName}} {{bar.lastName}} 
+          <br> <span class="darkBlue">from {{bar.start}} to {{bar.stop}}</span></h3>
+      </div>
+      <div id="{{bar.barId}}" class="unavailable darkBlueBkg notAvailable" ng-show="{{bar.shadowShow}}"></div>
+    </div>
+    <!-- ===================start of time display================== -->
+</div>
+<!-- bottom tab -->
+<div class="bottomTab whtBkg" >
+
+<div class="currentEmployee">
+    <div class="employeeHolder" >
+
+        <div class="employeeButton redBkg" ng-click="timeEditor()">
+        </div>
+        <div class="employeeInfo">
+            <h3 class="darkBlue">{{ePick.firstName}} {{ePick.lastName}}</h3>
+            <h5 class="subDetail darkBlue">Max  {{ePick.weeklyMax}} - Min  {{ePick.weeklyMin}}</h5>
+        </div>
+    </div>
+    <div class="employeeHolder textRight" ng-click="activeEeditor()">
+        <h4 class="blue">Schedule <br> Employee</h4>
+        <img class="addButton2" src="./images/add.svg" alt="add Employee" />
+    </div>
+</div>
+    
+    
+<!-- toolbar -->
+
+
+<div class="bottomBar whtBkg">
+
+    <div class="tool" ng-click="saveDay()">
+        <img class="toolIcon" src="./images/save.svg" alt="save" />
+        <h3 class="yellow">save</h3>
+    </div>
+    <div class="tool" ng-click="publishDay()">
+        <img class="toolIcon" src="./images/publish.svg" alt="save" />
+        <h3 class="green">publish</h3>
+    </div>
+    <div class="tool" ui-sref="setSchedule">
+        <img class="toolIcon" src="./images/cancel.svg" alt="save" />
+        <h3 class="red">cancel</h3>
+    </div>
+</div>
+
+
+    <!-- dayEditor -->
+    
+    
+<div class="stSpEditor whtBkg" ng-show="editToggler">
+
+    <div class="stContainer">
+        <h3 class="inputDescription darkBlue">Start</h3>
+        <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSto" ng-model="timeHolder.start">
+    </div>
+
+    <div class="stContainer">
+        <h3 class="inputDescription darkBlue">Stop</h3>
+        <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSto" ng-model="timeHolder.stop">
+    </div>
+
+    <div class="submitContainer">
+        <div class="buffer" ng-click="cancelStSp()">
+            <img class="toolIcon" src="./images/cancel.svg" alt="cancel" />
+            <h3 class="red">cancel</h3>
+        </div>
+        <div class="buffer" ng-click="submitTime()">
+            <img class="toolIcon" src="./images/add.svg" alt="submit" />
+            <h3 class="blue">submit</h3>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- employeePicker -->
+<div class="employeePicker whtBkg" ng-show="employeeEditorToggler">
+<!-- STYLES SHARED FROM EMPLOYEE.CSS -->
+
+<div class="employeeBox" ng-repeat="x in employeeList track by $index">
+  <div class="selectorBox greenBkg" ng-click="employeePick($index)"></div>
+  <div class="textHolder">
+      <h2 class="empName darkBlue">{{x.firstName}} {{x.lastName}}</h2>
+      <div class="subtextHolder">
+          <h4 class="hours darkGray">Min. Hrs. : {{x.weeklyMin}}</h4>
+          <h4 class="hours darkGray">Max. Hrs. : {{x.weeklyMax}}</h4>
+      </div>
+  </div>
+</div>
+
+
+</div>
+

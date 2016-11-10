@@ -1,9 +1,8 @@
 /*modal*/
 
 .psudoModalBackground{
-  height:100%;
-  width: 100%;
-  background-color: black;
+  height:100vh;
+  width: 100vw;
   z-index: 1;
   position:fixed;
   top: 0;
@@ -11,8 +10,6 @@
 }
 
 .psudoModalContainer{
-  height:100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   position:fixed;
@@ -23,7 +20,6 @@
 .psudoModal{
   width: 200px;
   height: 300px;
-  background-color: white;
   z-index: 20;
   margin: auto;
   display: flex;
@@ -58,7 +54,7 @@
 #return{
   height 20px;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   flex-wrap: nowrap;
   justify-content: space-around;
   margin: 20px auto;
@@ -69,4 +65,10 @@
   flex-flow: row;
 
 }
+
+.buttons{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  margin: 30px;
 }

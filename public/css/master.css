@@ -4,8 +4,7 @@
 .darkBlue{ color: #0A2933}
 .darkerBlueBkg{ background-color: #042029}
 .darkerBlue{ color: #042029}
-.darkGrayBkg{ background-color: #475B62}
-.darkGray{ color: #475B62}
+
 .yellowBkg{ background-color: #A57706}
 .yellow{ color: #A57706}
 .orangeBkg{ background-color: #BD3613}
@@ -21,6 +20,8 @@
 .greenBkg{ background-color: #738A05}
 .green{ color: #738A05}
 
+.darkGrayBkg{ background-color: #475B62}
+.darkGray{ color: #475B62}
 
 
 h1, h2, h3, h4, h5, h6{

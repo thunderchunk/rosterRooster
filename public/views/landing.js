@@ -7,14 +7,21 @@ angular.module('rosterRooster').controller('landing', function($scope,rService){
   // fake modal show/hide
 
   $scope.called = false;
-  $scope.caller = function(){
-     return $scope.called = true;
-    };
+  $scope.hide = function(){
+    $scope.called = false
+  }
+
+  $scope.login = function(){
+    
+  }
+  
+  $scope.newAcct = function(){
+    $scope.called = true;
+    console.log($scope.called);
+  }
 
 // set username and password
 
-
-//Store Username / password to local storage
 
 
 
