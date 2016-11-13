@@ -1,4 +1,5 @@
-angular.module('rosterRooster').controller('landing', function($scope,rService){
+angular.module('rosterRooster')
+.controller('landing', function($scope, rService){
 
   $scope.pageTitle = {
     title: "ROSTER ROOSTER",

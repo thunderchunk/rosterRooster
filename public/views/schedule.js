@@ -1,10 +1,18 @@
-angular.module('rosterRooster').controller('schedule', function($scope, rService) {
+angular.module('rosterRooster')
+.controller('schedule', function($scope, rService, employers, employees, assigned) {
 
   
+    $scope.employers = employers;
+    console.log('employers =', $scope.employers);
+    $scope.employees = employees;
+    console.log('employees =', $scope.employees);
+    $scope.assigned = assigned;
+    console.log('assigned =', $scope.assigned);
+    
     // ========== sets employee id number ==========
 
-    $scope.employeeIdNumber = 1;
-    $scope.employerIdNumber = 1;
+    $scope.employeeidNumber = 1;
+    $scope.employeridNumber = 1;
 
     // ========== sets initial date / creates variable to adjust display ==========
 
@@ -102,13 +110,14 @@ angular.module('rosterRooster').controller('schedule', function($scope, rService
     // ========== compares calendar object wi database ==========
 
 
-    var assignedHours = rService.assignedHours;
+    var assignedHours = assigned;
 
-
+    console.log(assignedHours);
+    
     for (var m = 0; m < finalArray.length; m++) {
       for (var n = 0; n < assignedHours.length; n++) {
           var dateParser = assignedHours[n].date.split("-");
-          if((assignedHours[n].employeeId === empId )
+          if((assignedHours[n].employeeid === empId )
               && ((dateParser[0] - 1) == finalArray[m].month)
               && (dateParser[1] == finalArray[m].day)
               && (("20" + dateParser[2]) == finalArray[m].year)
@@ -125,7 +134,7 @@ angular.module('rosterRooster').controller('schedule', function($scope, rService
 
 // ========== invoke the function, assigns object to variable ==========
 
-$scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+$scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
 
 
 // ========== changes the currentDate variable to navigate months ==========
@@ -147,7 +156,7 @@ $scope.adjustMonth = function(x) {
     $scope.displayDate = $scope.currentDate.getDate(); //4
     $scope.displayYear = $scope.currentDate.getFullYear(); //2016
 
-    $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+    $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
     $scope.titleMonth = $scope.titleChanger();
 };
 

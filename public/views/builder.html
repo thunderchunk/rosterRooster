@@ -25,8 +25,8 @@
         <div class="employeeButton redBkg" ng-click="startStopTime() " >
         </div>
         <div class="employeeInfo">
-            <h3 class="darkBlue">{{ePick.firstName}} {{ePick.lastName}}</h3>
-            <h5 class="subDetail darkBlue">Max  {{ePick.weeklyMax}} - Min  {{ePick.weeklyMin}}</h5>
+            <h3 class="darkBlue">{{ePick.firstname}} {{ePick.lastname}}</h3>
+            <h5 class="subDetail darkBlue">Max  {{ePick.weeklymax}} - Min  {{ePick.weeklymin}}</h5>
         </div>
     </div>
     <div class="employeeHolder textRight" ng-click="activeEeditor()">
@@ -94,10 +94,10 @@
 <div class="employeeBox" ng-repeat="x in employeeList track by $index">
   <div class="selectorBox greenBkg" ng-click="employeePick($index)"></div>
   <div class="textHolder">
-      <h2 class="empName darkBlue">{{x.firstName}} {{x.lastName}}</h2>
+      <h2 class="empName darkBlue">{{x.firstname}} {{x.lastname}}</h2>
       <div class="subtextHolder">
-          <h4 class="hours darkGray">Min. Hrs. : {{x.weeklyMin}}</h4>
-          <h4 class="hours darkGray">Max. Hrs. : {{x.weeklyMax}}</h4>
+          <h4 class="hours darkGray">Min. Hrs. : {{x.weeklymin}}</h4>
+          <h4 class="hours darkGray">Max. Hrs. : {{x.weeklymax}}</h4>
       </div>
   </div>
 </div>

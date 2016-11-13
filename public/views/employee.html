@@ -5,11 +5,11 @@
     <div class="employeeBox" ng-repeat="x in employeeLister() track by $index">
         <div class="selectorBox greenBkg" ui-sref="admin({id:x.id})"></div>
         <div class="textHolder">
-            <h2 class="empName darkBlue">{{x.firstName}} {{x.lastName}}</h2>
+            <h2 class="empName darkBlue">{{x.firstname}} {{x.lastname}}</h2>
             <div class="subtextHolder">
                 <h5 class="editTag green" ng-click="employeeEditor($index)">Edit</h5>
-                <h4 class="hours darkGray">Min. Hrs. : {{x.weeklyMin}}</h4>
-                <h4 class="hours darkGray">Max. Hrs. : {{x.weeklyMax}}</h4>
+                <h4 class="hours darkGray">Min. Hrs. : {{x.weeklymin}}</h4>
+                <h4 class="hours darkGray">Max. Hrs. : {{x.weeklymax}}</h4>
             </div>
         </div>
     </div>

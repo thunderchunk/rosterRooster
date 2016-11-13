@@ -1,9 +1,25 @@
-angular.module('rosterRooster').controller('builder', function($scope,$stateParams,rService){
+angular.module('rosterRooster')
+.controller('builder', function($scope,$stateParams, rService, availability, employers, employees, users, assigned, status){
+
+
+  $scope.availability = availability;
+  console.log('availability =', $scope.availability);
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.status = status;
+  // console.log('status =', $scope.status);
+  $scope.assigned = assigned;
+    // console.log('assigned =', $scope.assigned);
+
 
   // ========== sets employee id number ==========
-  $scope.employeeIdNumber = 1;
+  $scope.employeeidNumber = 1;
   // ========== sets employer  number ==========
-  $scope.employerIdNumber = 1;
+  $scope.employeridNumber = 1;
 
 // ========== MASTER VARIABLES ==========
   
@@ -41,39 +57,47 @@ angular.module('rosterRooster').controller('builder', function($scope,$statePara
 // ========================== EMPLOYEE SCHED. BUILDER ========================
 // =========================================================================
   
-  $scope.makeEmployeeList = function(){
-    var dOtW = $scope.dayList[$scope.theDoW];
-    var st = (dOtW)+"Start";
-    var sp = (dOtW)+"Stop";
-    
-    for (var i = 0; i < rService.employeeData.length; i++) {
-      var tempObj = {};
-      if(rService.employeeData[i].employerId == $scope.employerIdNumber){
-        tempObj.employerId = $scope.employerIdNumber;
-        tempObj.employeeId = rService.employeeData[i].id;
-        tempObj.firstName = rService.employeeData[i].firstName;
-        tempObj.lastName = rService.employeeData[i].lastName;
-        tempObj.weeklyMax = rService.employeeData[i].weeklyMax;
-        tempObj.weeklyMin = rService.employeeData[i].weeklyMin;
-        for (var j = 0; j < rService.employeeAvailable.length; j++) {
-          if (rService.employeeAvailable[j].employeeId == tempObj.employeeId) {
-            tempObj.start = rService.employeeAvailable[j][st];
-            tempObj.stop = rService.employeeAvailable[j][sp];
-            tempObj.stWord = st;
-            tempObj.spWord = sp;
+
+    $scope.makeEmployeeList = function(){
+      var dOtW = $scope.dayList[$scope.theDoW];
+      var st = (dOtW)+"start";
+      var sp = (dOtW)+"stop";
+      
+      console.log("AV = ",$scope.availability.length);
+      
+      for (var i = 0; i < $scope.employees.length; i++) {
+        var tempObj = {};
+        if($scope.employees[i].employerid == $scope.employeridNumber){
+          tempObj.employerid = $scope.employeridNumber;
+          tempObj.employeeid = $scope.employees[i].id;
+          tempObj.firstname = $scope.employees[i].firstname;
+          tempObj.lastname = $scope.employees[i].lastname;
+          tempObj.weeklymax = $scope.employees[i].weeklymax;
+          tempObj.weeklymin = $scope.employees[i].weeklymin;
+          for (var j = 0; j < $scope.availability.length; j++) {
+            
+            if ($scope.availability[j].employeeid == tempObj.employeeid) {
+              tempObj.start = $scope.availability[j][st];
+              tempObj.stop = $scope.availability[j][sp];
+              tempObj.stWord = st;
+              tempObj.spWord = sp;
+              console.log(tempObj);
+              $scope.employeeList.push(tempObj);
+            }
           }
+          
         }
-        $scope.employeeList.push(tempObj);
       }
-    }
-  };
+    };
 $scope.makeEmployeeList();
+console.log("$scope.employeeList = ", $scope.employeeList);
+
     
 $scope.employeeEditorToggler = false;
 
 $scope.activeEeditor = function(){
     $scope.employeeEditorToggler = true;
-  console.log($scope.employeeList);
+  
 };
 
 // =========================================================================
@@ -113,6 +137,7 @@ $scope.activeEeditor = function(){
 
   //parses time data into height and starting points
   $scope.barBuilder = function(){
+    console.log($scope.employeeList[$scope.idx].start);
   var splitter = $scope.employeeList[$scope.idx].start.split(':');
   var splitterB = $scope.employeeList[$scope.idx].stop.split(':');
   
@@ -174,8 +199,9 @@ $scope.shadowLoader = function(s1height, s2start, s2height){
 $scope.barText = function(){
   var c = $scope.activeColumn;
   var ix = $scope.idx;
-  $scope.barList[c-1].firstName = $scope.employeeList[ix].firstName;
-  $scope.barList[c-1].lastName = $scope.employeeList[ix].lastName;
+  $scope.barList[c-1].firstname = $scope.employeeList[ix].firstname;
+  $scope.barList[c-1].lastname = $scope.employeeList[ix].lastname;
+  $scope.barList[c-1].employeeid = $scope.employeeList[ix].employeeid;
   var startParser = $scope.employeeList[ix].start.split(":");
   var stopParser = $scope.employeeList[ix].stop.split(":");
   if((startParser[0]*1) < 12){  
@@ -267,104 +293,136 @@ $scope.employeePick = function($index){
 // ========================== SAVE, CLOSE, CANCEL ========+=================
 // =========================================================================
 
+// SAVE THE DAY
+
 $scope.saveDay = function(){
-  var m = $scope.theDay.getMonth();
+  var m = $scope.theDay.getMonth()+1;
   var d = $scope.theDay.getDate();
-  var y = $scope.theDay.getYear();
+  var y = $scope.theDay.getFullYear().toString().substr(2,2)
   var theDate = (m + "-" + d + "-" + y);
-  var aH = rService.assignedHours.length;
-  var ss = rService.scheduleStatus.length;
+  var aH = $scope.assigned.length;
+  var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
   var exists = false;
+  var postList = [];
   
-  for (var i = 0; i < $scope.employeeList.length; i++) {
-    for (var k = 0; k < rService.assignedHours.length; k++) {
+  console.log("employeeList = ",$scope.employeeList.length);
+  for (var t = 0; t < $scope.barList.length; t++) {
+    for (var u = 0; u < $scope.employeeList.length; u++) {
+    if ($scope.employeeList[u].employeeid == $scope.barList[t].employeeid){
+      postList.push($scope.employeeList[u])
+    }
+    }
+  }
+  
+  for (var i = 0; i < postList.length; i++) {
+    for (var k = 0; k < $scope.assigned.length; k++) {
       exists = false;
-      if((rService.assignedHours[k].employeeId == $scope.employeeList[i].employeeId) &&
-      (rService.assignedHours[k].date == theDate)){
-        rService.assignedHours[k].start = $scope.employeeList[i].start;
-        rService.assignedHours[k].stop = $scope.employeeList[i].stop;
+      if(($scope.assigned[k].employeeid == postList[i].employeeid) &&
+      ($scope.assigned[k].date == theDate)){
+        $scope.assigned[k].start = postList[i].start;
+        $scope.assigned[k].stop = postList[i].stop;
         exists = true;
       }
     }
     if (exists == false){
-      tempObj.id = aH;
-      tempObj.employeeId = $scope.employeeList[i].employeeId;
-      tempObj.employerId = $scope.employerIdNumber;
-      tempObj.date = theDate
-      tempObj.start = $scope.employeeList[i].start;
-      tempObj.stop = $scope.employeeList[i].stop;
-      rService.assignedHours.push(tempObj);
-      
+      tempObj.id = (aH + i);
+      tempObj.employeeid = postList[i].employeeid;
+      tempObj.employerid = $scope.employeridNumber;
+      tempObj.date = theDate;
+      tempObj.start = postList[i].start;
+      tempObj.stop = postList[i].stop;
+      rService.assignedHoursPost(tempObj);
+      console.log("assigned",tempObj);
     }
   };
-    for (var j = 0; j < rService.scheduleStatus.length; j++) {
-      if((rService.scheduleStatus[j].employerId ==  $scope.employerIdNumber)
-      &&(rService.scheduleStatus[j].date == theDate)){
-        rService.scheduleStatus[j].edited = true;
-        rService.scheduleStatus[j].published = false;
-      }else{
-        tempObjB.id = ss;
-        tempObjB.employerId = $scope.employerIdNumber;
-        tempObjB.date = theDate;
-        tempObjB.published = false;
-        tempObjB.edited = true;
-        rService.scheduleStatus[j] = tempObjB;
-      }
+    var saveTrigger = false;
+  
+    for (var j = 0; j < $scope.status.length; j++) {
+      if(($scope.status[j].employerid ==  $scope.employeridNumber)
+      &&($scope.status[j].date == theDate)){
+        $scope.status[j].edited = true;
+        $scope.status[j].published = false;
+      }else{ saveTrigger = true;}  
     }
-    console.log(' scheduleStatus upon publish =',rService.scheduleStatus);
-    console.log(' assignedHours upon publish =',rService.assignedHours);
+    if(saveTrigger  == true){
+      tempObjB.id = (ss + 1);
+      tempObjB.employerid = $scope.employeridNumber;
+      tempObjB.date = theDate;
+      tempObjB.published = false;
+      tempObjB.edited = true;
+      rService.scheduleStatusPost(tempObjB);
+      
+      saveTrigger = false;
+    }console.log("status",tempObjB);
+
+    // console.log(' scheduleStatus upon publish =',$scope.status);
+    // console.log(' assignedHours upon publish =',$scope.assigned);
 };
 
+// PUBLISH THE DAY
+
 $scope.publishDay = function(){
-  var m = $scope.theDay.getMonth();
+  var m = $scope.theDay.getMonth()+1;
   var d = $scope.theDay.getDate();
-  var y = $scope.theDay.getYear();
+  var y = $scope.theDay.getFullYear().toString().substr(2,2)
+  var postList = [];
   var theDate = (m + "-" + d + "-" + y);
-  var aH = rService.assignedHours.length;
-  var ss = rService.scheduleStatus.length;
+  var aH = $scope.assigned.length;
+  var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
   var exists = false;
 
-  for (var i = 0; i < $scope.employeeList.length; i++) {
-    for (var k = 0; k < rService.assignedHours.length; k++) {
+  for (var i = 0; i < postList.length; i++) {
+    for (var k = 0; k < $scope.assigned.length; k++) {
       exists = false;
-      if((rService.assignedHours[k].employeeId == $scope.employeeList[i].employeeId) &&
-      (rService.assignedHours[k].date == theDate)){
-        rService.assignedHours[k].start = $scope.employeeList[i].start;
-        rService.assignedHours[k].stop = $scope.employeeList[i].stop;
+      if(($scope.assigned[k].employeeid == postList[i].employeeid) &&
+      ($scope.assigned[k].date == theDate)){
+        $scope.assigned[k].start = postList[i].start;
+        $scope.assigned[k].stop = postList[i].stop;
         exists = true;
       }
     }
     if (exists == false){
-      tempObj.id = aH;
-      tempObj.employeeId = $scope.employeeList[i].employeeId;
-      tempObj.employerId = $scope.employerIdNumber;
+      tempObj.id = (aH + 1);
+      tempObj.employeeid = postList[i].employeeid;
+      tempObj.employerid = $scope.employeridNumber;
       tempObj.date = theDate
-      tempObj.start = $scope.employeeList[i].start;
-      tempObj.stop = $scope.employeeList[i].stop;
-      rService.assignedHours.push(tempObj);
+      tempObj.start = postList[i].start;
+      tempObj.stop = postList[i].stop;
+    
+      rService.assignedHoursPost(tempObj);
       
     }
-  };
-    for (var j = 0; j < rService.scheduleStatus.length; j++) {
-      if((rService.scheduleStatus[j].employerId ==  $scope.employerIdNumber)
-      &&(rService.scheduleStatus[j].date == theDate)){
-        rService.scheduleStatus[j].edited = true;
-        rService.scheduleStatus[j].published = true;
+  };console.log("assigned",tempObj);
+        publishTrigger = false;
+  
+    for (var j = 0; j < $scope.status.length; j++) {
+      if(($scope.status[j].employerid ==  $scope.employeridNumber)
+      &&($scope.status[j].date == theDate)){
+        $scope.status[j].edited = true;
+        $scope.status[j].published = true;
       }else{
-        tempObjB.id = ss;
-        tempObjB.employerId = $scope.employerIdNumber;
-        tempObjB.date = theDate;
-        tempObjB.published = true;
-        tempObjB.edited = true;
-        rService.scheduleStatus[j] = tempObjB;
+        publishTrigger = true;
       }
     }
-    console.log(' scheduleStatus upon publish =',rService.scheduleStatus);
-    console.log(' assignedHours upon publish =',rService.assignedHours);
+    
+    if(publishTrigger == true){
+    tempObjB.id = (ss +1);
+    tempObjB.employerid = $scope.employeridNumber;
+    tempObjB.date = theDate;
+    tempObjB.published = true;
+    tempObjB.edited = true;
+    $scope.status[j] = tempObjB;
+    console.log("status",tempObjB);
+    rService.scheduleStatusPost(tempObjB);
+    publishTrigger = false;
+  }
+    
+    // console.log(' scheduleStatus upon publish =',$scope.status);
+    // console.log(' assignedHours upon publish =',$scope.assigned);
   };
 
 

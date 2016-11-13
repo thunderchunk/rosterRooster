@@ -1,9 +1,22 @@
-angular.module('rosterRooster').controller('adminSchedule', function($scope, rService, $stateParams){
+angular.module('rosterRooster')
+.controller('adminSchedule', function($scope, rService, $stateParams, status, availability, employers, employees, assigned){
+
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.assigned = assigned;
+  // console.log('assigned =', $scope.assigned);
+  $scope.status = status;
+  // console.log('status =', $scope.assigned);
+
 
   // ========== sets employee id number ==========
 
-  $scope.employeeIdNumber = 1;
-  $scope.employerIdNumber = 1;
+  $scope.employeeidNumber = 1;
+  $scope.employeridNumber = 1;
   
   
   // ========== fills out content of employee lists ==========
@@ -17,14 +30,14 @@ $scope.employeeAvailable = {}//emoloyeeAvailable
 
   
     // ========== gets userinfo from Employee Id NUMBER ==========
-  $scope.getUserName = function(){
-    for (var i = 0; i < rService.employeeData.length; i++) {
-      if(rService.employeeData[i].id == $scope.employeeIdNumber){
-        var userInfo = rService.employeeData[i];
+  $scope.getusername = function(){
+    for (var i = 0; i < employees.length; i++) {
+      if(employees[i].id == $scope.employeeidNumber){
+        var userInfo = employees[i];
       }
     }return userInfo;
   }
-  $scope.userInfo = $scope.getUserName();
+  $scope.userInfo = $scope.getusername();
 
   // ========== sets initial date / creates variable to adjust display ==========
 
@@ -121,12 +134,12 @@ $scope.calendarBuilder = function(month, day, year, empId){
 
     // ========== compares calendar object wi scheduleStatus ==========
     
-    var scheduleStatusChecker = rService.scheduleStatus;
+    var scheduleStatusChecker = status;
     
     for (var m = 0; m < finalArray.length; m++) {
       for (var n = 0; n < scheduleStatusChecker.length; n++) {
         var dateParser = scheduleStatusChecker[n].date.split("-");
-        if($scope.employerIdNumber === scheduleStatusChecker[n].employerId){
+        if($scope.employeridNumber === scheduleStatusChecker[n].employerid){
           if ((scheduleStatusChecker[n].published === true) 
             && (("20" + dateParser[2]) == finalArray[m].year)
             && (dateParser[1] == finalArray[m].day)
@@ -154,7 +167,7 @@ $scope.calendarBuilder = function(month, day, year, empId){
 
 // ========== invoke the function, assigns object to variable ==========
 
-$scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+$scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
 
 
 // ========== changes the currentDate variable to navigate months ==========
@@ -176,7 +189,7 @@ $scope.adjustMonth = function(x) {
     $scope.displayDate = $scope.currentDate.getDate(); //4
     $scope.displayYear = $scope.currentDate.getFullYear(); //2016
 
-    $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+    $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
     $scope.titleMonth = $scope.titleChanger();
 };
 

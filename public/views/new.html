@@ -4,12 +4,12 @@
         <!-- first tier of info xw-->
         <div class="singleInputHolder">
             <h3 class="inputDescription darkBlue">First Name</h3>
-            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="fName" ng-model="currentEmployee.firstName">
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="fName" ng-model="currentEmployee.firstname">
         </div>
 
         <div class="singleInputHolder">
             <h3 class="inputDescription darkBlue">Last Name</h3>
-            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="lName" ng-model="currentEmployee.lastName">
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="lName" ng-model="currentEmployee.lastname">
         </div>
 
         <div class="singleInputHolder">
@@ -19,14 +19,14 @@
 
         <div class="multiInputHolder">
             <h3 class="inputDescription darkBlue">Middle Initial</h3>
-            <input class="basicInput smallInput darkBlueBkg wht" type="text" name="mInitial" ng-model="currentEmployee.mInitial">
+            <input class="basicInput smallInput darkBlueBkg wht" type="text" name="minitial" ng-model="currentEmployee.minitial">
         </div>
         <!-- end first section -->
         <div class="linebreak"> </div>
         <!-- start password / user section -->
         <div class="singleInputHolder">
             <h3 class="inputDescription darkBlue">User Name</h3>
-            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="uName" ng-model="userData.userName">
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" name="uName" ng-model="userData.username">
         </div>
         <div class="singleInputHolder">
             <h3 class="inputDescription darkBlue">Password</h3>
@@ -43,6 +43,15 @@
         </div>
         <!-- end overtime section -->
         <div class="linebreak"> </div>
+        <!-- start MAX-Min SECTION -->
+        <div class="multiInputHolder">
+          <h3 class="inputDescription darkBlue">Max Hours</h3>
+          <input class="basicInput smallInput darkBlueBkg wht" type="text" name="Max Hours" ng-model="currentEmployee.weeklymax">
+          <h3 class="inputDescription darkBlue">Min Hours</h3>
+          <input class="basicInput smallInput darkBlueBkg wht" type="text" name="Min Hours" ng-model="currentEmployee.weeklymin">
+        </div>
+        <!-- end MAX-MIN section -->
+        <div class="linebreak"> </div>
 
         <!-- ENTER DAY INFORMATION -->
         <div class="dayHolder">
@@ -51,12 +60,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSta" ng-model="availHours.mStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSta" ng-model="availHours.mstart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSto" ng-model="availHours.mStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="mSto" ng-model="availHours.mstop">
             </div>
         </div>
 
@@ -85,12 +94,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSta" ng-model="availHours.tuStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSta" ng-model="availHours.tustart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSto" ng-model="availHours.tuStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="tuSto" ng-model="availHours.tustop">
             </div>
 
             <!-- wednesday -->
@@ -99,12 +108,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSta" ng-model="availHours.wStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSta" ng-model="availHours.wstart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSto" ng-model="availHours.wStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="wSto" ng-model="availHours.wstop">
             </div>
 
 
@@ -114,12 +123,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSta" ng-model="availHours.thStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSta" ng-model="availHours.thstart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSto" ng-model="availHours.thStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="thSto" ng-model="availHours.thstop">
             </div>
 
             <!-- friday -->
@@ -128,12 +137,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSta" ng-model="availHours.fStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSta" ng-model="availHours.fstart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSto" ng-model="availHours.fStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="fSto" ng-model="availHours.fstop">
             </div>
 
             <!-- saturday -->
@@ -142,12 +151,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSta" ng-model="availHours.stStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSta" ng-model="availHours.ststart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSto" ng-model="availHours.stStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="stSto" ng-model="availHours.ststop">
             </div>
 
             <!-- sunday -->
@@ -156,12 +165,12 @@
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Start</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSta" ng-model="availHours.sdStart">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSta" ng-model="availHours.sdstart">
             </div>
 
             <div class="singleInputHolder">
                 <h3 class="inputDescription darkBlue">Stop</h3>
-                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSto" ng-model="availHours.sdStop">
+                <input class="basicInput bigInput darkBlueBkg wht" type="time" name="sdSto" ng-model="availHours.sdstop">
             </div>
         </div>
         <!-- =============  TOOLBAR   ============== -->

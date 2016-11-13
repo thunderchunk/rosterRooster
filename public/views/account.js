@@ -1,10 +1,15 @@
-angular.module('rosterRooster').controller('account', function($scope,rService){
+angular.module('rosterRooster')
+.controller('account', function($scope, rService, availability, employers){
   
-  
+  $scope.availability = availability;
+  console.log('availability =', $scope.availability);
+  $scope.employers = employers;
+  console.log('employers =', $scope.employers);
+
     // ========== sets employee id number ==========
 
-    $scope.employeeIdNumber = 1;
-    $scope.employerIdNumber = 1;
+    $scope.employeeidNumber = 1;
+    $scope.employeridNumber = 1;
 
     // ========== sets initial date / creates variable to adjust display ==========
 
@@ -100,17 +105,17 @@ angular.module('rosterRooster').controller('account', function($scope,rService){
       };
 
       // ========== compares calendar object wi availability ==========
-
-
-      var availableHours = rService.employeeAvailable;
+      
+  
       var employeeFinder = function(){
-        for (var m = 0; m < availableHours.length; m++) {
-          if(availableHours[m].employeeId === $scope.employeeIdNumber){
-            return availableHours[m];
+        for (var m = 0; m < $scope.availability.length; m++) {
+          if($scope.availability[m].employeeid === $scope.employeeidNumber){
+            return $scope.availability[m];
           }
         }
       }
       var userAvailableHours = employeeFinder();
+      console.log("userAvailableHours = ", userAvailableHours);
       
       var sd = [0, 7, 14, 21, 28, 35];
       var md = [1, 8, 15, 22, 29, 36];
@@ -122,61 +127,61 @@ angular.module('rosterRooster').controller('account', function($scope,rService){
       
       for (var n = 0; n < sd.length; n++) {
         var dayParser = sd[n];
-        if(userAvailableHours.sdStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.sdstart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var o = 0; o < md.length; o++) {
         var dayParser = md[o];
-        if(userAvailableHours.mStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.mstart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var p = 0; p < tu.length; p++) {
         var dayParser = tu[p];
-        if(userAvailableHours.tuStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.tustart  && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var q = 0; q < wd.length; q++) {
         var dayParser = wd[q];
-        if(userAvailableHours.wStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.wstart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var r = 0; r < th.length; r++) {
         var dayParser = th[r];
-        if(userAvailableHours.thStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.thstart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var s = 0; s < fr.length; s++) {
         var dayParser = fr[s];
-        if(userAvailableHours.fStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.fstart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
       for (var t = 0; t < st.length; t++) {
         var dayParser = st[t];
-        if(userAvailableHours.stStart != "" && finalArray[dayParser]){
+        if(userAvailableHours.ststart && finalArray[dayParser]){
           finalArray[dayParser].work = true;
         }
       };
       
-      // console.log(finalArray);
+      console.log("finalArray =", finalArray);
       return finalArray;
 
   };
 
   // ========== invoke the function, assigns object to variable ==========
 
-  $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+  $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
 
 
   // ========== changes the currentDate variable to navigate months ==========
@@ -198,7 +203,7 @@ angular.module('rosterRooster').controller('account', function($scope,rService){
       $scope.displayDate = $scope.currentDate.getDate(); //4
       $scope.displayYear = $scope.currentDate.getFullYear(); //2016
 
-      $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeIdNumber);
+      $scope.calenderView = $scope.calendarBuilder($scope.displayMonth, $scope.displayDate, $scope.displayYear, $scope.employeeidNumber);
       $scope.titleMonth = $scope.titleChanger();
   };
 

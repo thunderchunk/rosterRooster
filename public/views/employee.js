@@ -1,9 +1,20 @@
-angular.module('rosterRooster').controller('employee', function($scope,$window,rService){
+angular.module('rosterRooster')
+.controller('employee', function($scope,$window,rService,availability,employers,employees,users){
+  
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  
   
   // ========== sets employee id number ==========
-  $scope.employeeIdNumber = 1;
+  $scope.employeeidNumber = 1;
   // ========== sets employer  number ==========
-  $scope.employerIdNumber = 1;
+  $scope.employeridNumber = 1;
 
   // ========== master Variables ==========
   // provides a variable for later use
@@ -15,7 +26,7 @@ angular.module('rosterRooster').controller('employee', function($scope,$window,r
   //variable that holds availble hours per selected employee
   $scope.availHours = {}//emoloyeeAvailable
   //variable that holds selected employee id number
-  $scope.selectedIdNumber = $scope.employeeIdNumber;  //default login id number
+  $scope.selectedIdNumber = $scope.employeeidNumber;  //default login id number
   // ========== end master Variables ==========
   
   
@@ -24,10 +35,10 @@ angular.module('rosterRooster').controller('employee', function($scope,$window,r
   $scope.employeeLister = function(){
     var tempList = [];
     // console.log("employeeData is " , rService.employeeData);
-    for (var i = 0; i < rService.employeeData.length; i++) {
-        if ($scope.employerIdNumber == rService.employeeData[i].employerId){
-        tempList.push(rService.employeeData[i]);
-        $scope.employeeList.push(rService.employeeData[i]);
+    for (var i = 0; i < $scope.employees.length; i++) {
+        if ($scope.employeridNumber == $scope.employees[i].employerid){
+        tempList.push($scope.employees[i]);
+        $scope.employeeList.push($scope.employees[i]);
       }
     }
     // console.log("employeeLister availHours is " , $scope.availHours);
