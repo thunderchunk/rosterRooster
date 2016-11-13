@@ -11,13 +11,13 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response.data);
+              // console.log(response);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response.data);
+              // console.log(response);
               return response.data;
             });
           }],
@@ -37,13 +37,13 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           availability: ["rService", function (rService) {
             return rService.employeeAvailable().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }]
@@ -57,25 +57,25 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           availability: ["rService", function (rService) {
             return rService.employeeAvailable().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           users: ["rService", function (rService) {
             return rService.masterUsers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }]
@@ -89,25 +89,31 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           availability: ["rService", function (rService) {
             return rService.employeeAvailable().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           assigned: ["rService", function (rService) {
             return rService.assignedHours().then(function(response) {
-              console.log(response);
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          status: ["rService", function (rService) {
+            return rService.scheduleStatus().then(function(response) {
+              // console.log(response);
               return response.data;
             });
           }]
@@ -121,19 +127,19 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response.data);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response);
+              // console.log(response.data);
               return response.data;
             });
           }],
           assigned: ["rService", function (rService) {
-            return rService.assigned().then(function(response) {
-              console.log(response);
+            return rService.assignedHours().then(function(response) {
+              // console.log(response.data);
               return response.data;
             });
           }]
@@ -154,19 +160,19 @@ angular.module('rosterRooster', ['ui.router'])
           }],
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           users: ["rService", function (rService) {
             return rService.masterUsers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }]
@@ -177,7 +183,33 @@ angular.module('rosterRooster', ['ui.router'])
       .state('new', {
         url: '/new',
         templateUrl: './views/new.html',
-        controller: 'new'
+        controller: 'new',
+        resolve: {
+          availability: ["rService", function (rService) {
+            return rService.employeeAvailable().then(function(response) {
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          employers: ["rService", function (rService) {
+            return rService.employers().then(function(response) {
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          employees: ["rService", function (rService) {
+            return rService.employeeData().then(function(response) {
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          users: ["rService", function (rService) {
+            return rService.masterUsers().then(function(response) {
+              // console.log(response);
+              return response.data;
+            });
+          }]
+        }
 
       })
       
@@ -188,25 +220,37 @@ angular.module('rosterRooster', ['ui.router'])
         resolve: {
           availability: ["rService", function (rService) {
             return rService.employeeAvailable().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employers: ["rService", function (rService) {
             return rService.employers().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           employees: ["rService", function (rService) {
             return rService.employeeData().then(function(response) {
-              console.log(response);
+              // console.log(response);
               return response.data;
             });
           }],
           users: ["rService", function (rService) {
             return rService.masterUsers().then(function(response) {
-              console.log(response);
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          assigned: ["rService", function (rService) {
+            return rService.assignedHours().then(function(response) {
+              // console.log(response);
+              return response.data;
+            });
+          }],
+          status: ["rService", function (rService) {
+            return rService.scheduleStatus().then(function(response) {
+              // console.log(response);
               return response.data;
             });
           }]
@@ -242,28 +286,31 @@ this.masterUsers = function(){
 })
 };
 
-this.masterUsersPost = function(){
+this.masterUsersPost = function(user){
   return $http({
   method: 'POST',
-  url: '/user'
+  url: '/user',
+  data: user
 }).then(function(response){
   return response;
 })
 };
 
-this.masterUsersPut = function(){
+this.masterUsersPut = function(user){
   return $http({
   method: 'PUT',
-  url: '/user'
+  url: '/user',
+  data: user
 }).then(function(response){
   return response;
 })
 };
 
-this.masterUsersDelete = function(){
+this.masterUsersDelete = function(user){
   return $http({
   method: 'DELETE',
-  url: '/user'
+  url: '/user',
+  data: user
 }).then(function(response){
   return response;
 })
@@ -280,28 +327,31 @@ this.scheduleStatus = function(){
 })
 };
 
-this.scheduleStatusPost = function(){
+this.scheduleStatusPost = function(status){
   return $http({
   method: 'POST',
-  url: '/status'
+  url: '/status',
+  data: status
 }).then(function(response){
   return response;
 })
 };
 
-this.scheduleStatusPut = function(){
+this.scheduleStatusPut = function(status){
   return $http({
   method: 'PUT',
-  url: '/status'
+  url: '/status',
+  data: status
 }).then(function(response){
   return response;
 })
 };
 
-this.scheduleStatusDelete = function(){
+this.scheduleStatusDelete = function(status){
   return $http({
   method: 'DELETE',
-  url: '/status'
+  url: '/status',
+  data: status
 }).then(function(response){
   return response;
 })
@@ -317,28 +367,31 @@ this.employeeData = function(){
 })
 };
 
-this.employeeDataPost = function(){
+this.employeeDataPost = function(employee){
   return $http({
   method: 'POST',
-  url: '/employees'
+  url: '/employees',
+  data: employee
 }).then(function(response){
   return response;
 })
 };
 
-this.employeeDataPut = function(){
+this.employeeDataPut = function(employee){
   return $http({
   method: 'PUT',
-  url: '/employees'
+  url: '/employees',
+  data: employee
 }).then(function(response){
   return response;
 })
 };
 
-this.employeeDataDelete = function(){
+this.employeeDataDelete = function(employee){
   return $http({
   method: 'DELETE',
-  url: '/employees'
+  url: '/employees',
+  data: employee
 }).then(function(response){
   return response;
 })
@@ -354,28 +407,31 @@ this.employers = function(){
 })
 };
 
-this.employersPost = function(){
+this.employersPost = function(employer){
   return $http({
   method: 'POST',
-  url: '/employers'
+  url: '/employers',
+  data: employer
 }).then(function(response){
   return response;
 })
 };
 
-this.employersPut = function(){
+this.employersPut = function(employer){
   return $http({
   method: 'PUT',
-  url: '/employers'
+  url: '/employers',
+  data: employer
 }).then(function(response){
   return response;
 })
 };
 
-this.employersDelete = function(){
+this.employersDelete = function(employer){
   return $http({
   method: 'DELETE',
-  url: '/employers'
+  url: '/employers',
+  data: employer
 }).then(function(response){
   return response;
 })
@@ -390,28 +446,31 @@ this.employeeAvailable = function(){
 };
 // console.log(this.employeeAvailable);
 
-this.employeeAvailablePost = function(){
+this.employeeAvailablePost = function(data){
   return $http({
   method: 'POST',
-  url: '/availability'
+  url: '/availability',
+  data: data
 }).then(function(response){
   return response;
 })
 };
 
-this.employeeAvailablePut = function(){
+this.employeeAvailablePut = function(data){
   return $http({
   method: 'PUT',
-  url: '/availability'
+  url: '/availability',
+  data: data
 }).then(function(response){
   return response;
 })
 };
 
-this.employeeAvailableDelete = function(){
+this.employeeAvailableDelete = function(data){
   return $http({
   method: 'DELETE',
-  url: '/availability'
+  url: '/availability',
+  data: data
 }).then(function(response){
   return response;
 })
@@ -427,28 +486,31 @@ this.assignedHours = function(){
 })
 };
 
-this.assignedHoursPost = function(){
+this.assignedHoursPost = function(data){
   return $http({
   method: 'POST',
-  url: '/assigned'
+  url: '/assigned',
+  data: data
 }).then(function(response){
   return response;
 })
 };
 
-this.assignedHoursPut = function(){
+this.assignedHoursPut = function(data){
   return $http({
   method: 'PUT',
-  url: '/assigned'
+  url: '/assigned',
+  data: data
 }).then(function(response){
   return response;
 })
 };
 
-this.assignedHoursDelete = function(){
+this.assignedHoursDelete = function(data){
   return $http({
   method: 'DELETE',
-  url: '/assigned'
+  url: '/assigned',
+  data: data
 }).then(function(response){
   return response;
 })
@@ -918,7 +980,15 @@ angular.module('rosterRooster')
 angular.module('rosterRooster')
 .controller('admin', ["$scope", "$stateParams", "rService", "availability", "employers", "employees", "users", function($scope,$stateParams,rService,availability,employers,employees,users){
   
-
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  
   
     // ========== sets employee id number ==========
     $scope.employeeidNumber = 1;
@@ -948,9 +1018,9 @@ angular.module('rosterRooster')
   
   // SETS CURRENT EMPLOYEE
     $scope.getCurrentEmployee = function(){
-      for (var i = 0; i < rService.employeeData.length; i++) {
-        if(rService.employeeData[i].id == $scope.selectedIdNumber)
-        $scope.currentEmployee = rService.employeeData[i];
+      for (var i = 0; i < employees.length; i++) {
+        if(employees[i].id == $scope.selectedIdNumber)
+        $scope.currentEmployee = employees[i];
       }
       // console.log($scope.currentEmployee);
     };
@@ -958,34 +1028,47 @@ angular.module('rosterRooster')
     
   // SETS USER DATA  
     $scope.getUserData = function(){
-      for (var i = 0; i < rService.masterUsers.length; i++) {
-        if(rService.masterUsers[i].employeeid == $scope.selectedIdNumber)
-        $scope.userData = rService.masterUsers[i];
+      for (var i = 0; i < users.length; i++) {
+        if(users[i].employeeid == $scope.selectedIdNumber)
+        $scope.userData = users[i];
       }
     };
     
   // SETS AVAILABLE HOURS
     $scope.getAvailHours = function(){
       $scope.eAvailEditor = {};
-      for (var j = 0; j < rService.employeeAvailable.length; j++) {
-        if(rService.employeeAvailable[j].employeeid == $scope.selectedIdNumber){
-          $scope.eAvailEditor = rService.employeeAvailable[j]}
+      for (var j = 0; j < availability.length; j++) {
+        if(availability[j].employeeid == $scope.selectedIdNumber){
+          $scope.eAvailEditor = availability[j]}
           
           for (var k = 0; k < $scope.dayParser.length; k++) {
-            if($scope.eAvailEditor[($scope.dayParser[k]+'Start')]){
-            var st = $scope.eAvailEditor[($scope.dayParser[k]+'Start')].split(":");
-            $scope.availHours[($scope.dayParser[k]+'Start')] = new Date(2000, 00, 1, st[0], st[1]);
-          }else{$scope.availHours[($scope.dayParser[k]+'Start')] = null};
-            if($scope.eAvailEditor[($scope.dayParser[k]+'Stop')]){
-            var sp = $scope.eAvailEditor[($scope.dayParser[k]+'Stop')].split(":");
-            $scope.availHours[($scope.dayParser[k]+'Stop')] = new Date(2000, 00, 1, sp[0], sp[1]);
-          }else{$scope.availHours[($scope.dayParser[k]+'Stop')] = null};
+            if($scope.eAvailEditor[($scope.dayParser[k]+'start')]){
+            var st = $scope.eAvailEditor[($scope.dayParser[k]+'start')].split(":");
+            $scope.availHours[($scope.dayParser[k]+'start')] = new Date(2000, 00, 1, st[0], st[1]);
+          }else{$scope.availHours[($scope.dayParser[k]+'start')] = null};
+            if($scope.eAvailEditor[($scope.dayParser[k]+'stop')]){
+            var sp = $scope.eAvailEditor[($scope.dayParser[k]+'stop')].split(":");
+            $scope.availHours[($scope.dayParser[k]+'stop')] = new Date(2000, 00, 1, sp[0], sp[1]);
+          }else{$scope.availHours[($scope.dayParser[k]+'stop')] = null};
           }
       }
     };
     
     //MANAGES OVERTIME CLICK
     
+    
+    $scope.otChecker = function(){
+      if($scope.availHours.overtime = true){
+        $scope.otChecky = true;
+        $scope.otCheckn = false;
+      }else{
+        $scope.otChecky = false;
+        $scope.otCheckn = true;
+      }
+    };
+    
+    $scope.otChecker();
+     
     $scope.otYes = function(){
       $scope.otChecky = true;
       $scope.otCheckn = false;
@@ -997,6 +1080,9 @@ angular.module('rosterRooster')
       $scope.otCheckn = true;
       $scope.availHours.overtime = false;
     };
+    
+
+
     
     // INVOKES THE FUNCTIONS
     
@@ -1012,9 +1098,9 @@ angular.module('rosterRooster')
     // SAVES ROOT EMPLOYEE  INFORMATION
 
     $scope.saveEmployeeData = function(){
-    for (var l = 0; l < rService.employeeData.length; l++) {
-      if(rService.employeeData[l].employeeid == $scope.selectedIdNumber){
-        rService.employeeData[l] = $scope.currentEmployee;
+    for (var l = 0; l < employees.length; l++) {
+      if(employees[l].employeeid == $scope.selectedIdNumber){
+        rService.employeeDataPut($scope.currentEmployee);
       }
     }
     };
@@ -1022,10 +1108,10 @@ angular.module('rosterRooster')
     // SAVES username AND PASSWORD INFORMATION
 
     $scope.saveMasterUsers = function(){
-    for (var m = 0; m < rService.masterUsers.length; m++) {
-      if(rService.masterUsers[m].employeeid == $scope.selectedIdNumber){
-        $scope.userData.id = rService.masterUsers[m].id;
-        rService.masterUsers[m] = $scope.userData;
+    for (var m = 0; m < users.length; m++) {
+      if(users[m].employeeid == $scope.selectedIdNumber){
+        $scope.userData.id = users[m].id;
+        rService.masterUsersPut($scope.userData);
       }
     }
     };
@@ -1035,19 +1121,21 @@ angular.module('rosterRooster')
     $scope.parseAvailHours = function(){
       
       for (var i = 0; i < $scope.dayParser.length; i++) {
-        if($scope.availHours[($scope.dayParser [i] + "Start")]){
-          var h = $scope.availHours[($scope.dayParser [i] + "Start")].getHours();
-          var m = $scope.availHours[($scope.dayParser [i] + "Start")].getMinutes();
+        if($scope.availHours[($scope.dayParser [i] + "start")]){
+          var h = $scope.availHours[($scope.dayParser [i] + "start")].getHours();
+          var m = $scope.availHours[($scope.dayParser [i] + "start")].getMinutes();
+          if (m == 0){m = "00"};
           var joiner = [h, m];
-          $scope.availHours[($scope.dayParser [i] + "Start")] = joiner.join(':')
-        } else {$scope.availHours[($scope.dayParser [i] + "Start")] = null};
+          $scope.availHours[($scope.dayParser [i] + "start")] = joiner.join(':')
+        } else {$scope.availHours[($scope.dayParser [i] + "start")] = null};
         
-        if($scope.availHours[($scope.dayParser [i] + "Stop")]){
-          var h = $scope.availHours[($scope.dayParser [i] + "Stop")].getHours();
-          var m = $scope.availHours[($scope.dayParser [i] + "Stop")].getMinutes();
+        if($scope.availHours[($scope.dayParser [i] + "stop")]){
+          var h = $scope.availHours[($scope.dayParser [i] + "stop")].getHours();
+          var m = $scope.availHours[($scope.dayParser [i] + "stop")].getMinutes();
+          if (m == 0){m = "00"};
           var joiner = [h, m];
-          $scope.availHours[($scope.dayParser [i] + "Stop")] = joiner.join(':')
-        } else {$scope.availHours[($scope.dayParser [i] + "Stop")] = null};  
+          $scope.availHours[($scope.dayParser [i] + "stop")] = joiner.join(':')
+        } else {$scope.availHours[($scope.dayParser [i] + "stop")] = null};  
       }
     };
 
@@ -1056,10 +1144,10 @@ angular.module('rosterRooster')
     $scope.saveAvailHours = function(){
       $scope.availHours.employeeid = $scope.selectedIdNumber;
       
-      for (var i = 0; i < rService.employeeAvailable.length; i++) {
-        if(rService.employeeAvailable[i].employeeid = $scope.selectedIdNumber){
-          $scope.availHours.id = rService.employeeAvailable[i].id;
-          rService.employeeAvailable[i] = $scope.availHours;
+      for (var i = 0; i < availability.length; i++) {
+        if(availability[i].employeeid = $scope.selectedIdNumber){
+          $scope.availHours.id = availability[i].id;
+          rService.employeeAvailablePut($scope.availHours);
         }
     }
     };
@@ -1076,15 +1164,27 @@ angular.module('rosterRooster')
         console.log("2b SAVED availHours is " , $scope.availHours);
         console.log("2b SAVED userData is " , $scope.userData);
         console.log("2b SAVED currentEmployee is " , $scope.currentEmployee);
-        console.log("saved employeeAvailable is " , rService.employeeAvailable);
-        console.log("saved userData is " , rService.masterUsers);
-        console.log("saved currentEmployee is " , rService.employeeData);
+        console.log("saved employeeAvailable is " , availability);
+        console.log("saved userData is " , users);
+        console.log("saved currentEmployee is " , employees);
         
     }; 
     
   }]);
 angular.module('rosterRooster')
-.controller('adminSchedule', ["$scope", "rService", "$stateParams", "availability", "employers", "employees", "assigned", function($scope, rService, $stateParams, availability, employers, employees, assigned){
+.controller('adminSchedule', ["$scope", "rService", "$stateParams", "status", "availability", "employers", "employees", "assigned", function($scope, rService, $stateParams, status, availability, employers, employees, assigned){
+
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.assigned = assigned;
+  // console.log('assigned =', $scope.assigned);
+  $scope.status = status;
+  // console.log('status =', $scope.assigned);
+
 
   // ========== sets employee id number ==========
 
@@ -1104,9 +1204,9 @@ $scope.employeeAvailable = {}//emoloyeeAvailable
   
     // ========== gets userinfo from Employee Id NUMBER ==========
   $scope.getusername = function(){
-    for (var i = 0; i < rService.employeeData.length; i++) {
-      if(rService.employeeData[i].id == $scope.employeeidNumber){
-        var userInfo = rService.employeeData[i];
+    for (var i = 0; i < employees.length; i++) {
+      if(employees[i].id == $scope.employeeidNumber){
+        var userInfo = employees[i];
       }
     }return userInfo;
   }
@@ -1207,7 +1307,7 @@ $scope.calendarBuilder = function(month, day, year, empId){
 
     // ========== compares calendar object wi scheduleStatus ==========
     
-    var scheduleStatusChecker = rService.scheduleStatus;
+    var scheduleStatusChecker = status;
     
     for (var m = 0; m < finalArray.length; m++) {
       for (var n = 0; n < scheduleStatusChecker.length; n++) {
@@ -1308,7 +1408,22 @@ angular.module('rosterRooster')
   
 });
 angular.module('rosterRooster')
-.controller('builder', ["$scope", "$stateParams", "rService", "availability", "employers", "employees", "users", function($scope,$stateParams,rService,availability,employers, employees,users){
+.controller('builder', ["$scope", "$stateParams", "rService", "availability", "employers", "employees", "users", "assigned", "status", function($scope,$stateParams, rService, availability, employers, employees, users, assigned, status){
+
+
+  $scope.availability = availability;
+  console.log('availability =', $scope.availability);
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.status = status;
+  // console.log('status =', $scope.status);
+  $scope.assigned = assigned;
+    // console.log('assigned =', $scope.assigned);
+
 
   // ========== sets employee id number ==========
   $scope.employeeidNumber = 1;
@@ -1351,39 +1466,47 @@ angular.module('rosterRooster')
 // ========================== EMPLOYEE SCHED. BUILDER ========================
 // =========================================================================
   
-  $scope.makeEmployeeList = function(){
-    var dOtW = $scope.dayList[$scope.theDoW];
-    var st = (dOtW)+"Start";
-    var sp = (dOtW)+"Stop";
-    
-    for (var i = 0; i < rService.employeeData.length; i++) {
-      var tempObj = {};
-      if(rService.employeeData[i].employerid == $scope.employeridNumber){
-        tempObj.employerid = $scope.employeridNumber;
-        tempObj.employeeid = rService.employeeData[i].id;
-        tempObj.firstname = rService.employeeData[i].firstname;
-        tempObj.lastname = rService.employeeData[i].lastname;
-        tempObj.weeklymax = rService.employeeData[i].weeklymax;
-        tempObj.weeklymin = rService.employeeData[i].weeklymin;
-        for (var j = 0; j < rService.employeeAvailable.length; j++) {
-          if (rService.employeeAvailable[j].employeeid == tempObj.employeeid) {
-            tempObj.start = rService.employeeAvailable[j][st];
-            tempObj.stop = rService.employeeAvailable[j][sp];
-            tempObj.stWord = st;
-            tempObj.spWord = sp;
+
+    $scope.makeEmployeeList = function(){
+      var dOtW = $scope.dayList[$scope.theDoW];
+      var st = (dOtW)+"start";
+      var sp = (dOtW)+"stop";
+      
+      console.log("AV = ",$scope.availability.length);
+      
+      for (var i = 0; i < $scope.employees.length; i++) {
+        var tempObj = {};
+        if($scope.employees[i].employerid == $scope.employeridNumber){
+          tempObj.employerid = $scope.employeridNumber;
+          tempObj.employeeid = $scope.employees[i].id;
+          tempObj.firstname = $scope.employees[i].firstname;
+          tempObj.lastname = $scope.employees[i].lastname;
+          tempObj.weeklymax = $scope.employees[i].weeklymax;
+          tempObj.weeklymin = $scope.employees[i].weeklymin;
+          for (var j = 0; j < $scope.availability.length; j++) {
+            
+            if ($scope.availability[j].employeeid == tempObj.employeeid) {
+              tempObj.start = $scope.availability[j][st];
+              tempObj.stop = $scope.availability[j][sp];
+              tempObj.stWord = st;
+              tempObj.spWord = sp;
+              console.log(tempObj);
+              $scope.employeeList.push(tempObj);
+            }
           }
+          
         }
-        $scope.employeeList.push(tempObj);
       }
-    }
-  };
+    };
 $scope.makeEmployeeList();
+console.log("$scope.employeeList = ", $scope.employeeList);
+
     
 $scope.employeeEditorToggler = false;
 
 $scope.activeEeditor = function(){
     $scope.employeeEditorToggler = true;
-  console.log($scope.employeeList);
+  
 };
 
 // =========================================================================
@@ -1423,6 +1546,7 @@ $scope.activeEeditor = function(){
 
   //parses time data into height and starting points
   $scope.barBuilder = function(){
+    console.log($scope.employeeList[$scope.idx].start);
   var splitter = $scope.employeeList[$scope.idx].start.split(':');
   var splitterB = $scope.employeeList[$scope.idx].stop.split(':');
   
@@ -1486,6 +1610,7 @@ $scope.barText = function(){
   var ix = $scope.idx;
   $scope.barList[c-1].firstname = $scope.employeeList[ix].firstname;
   $scope.barList[c-1].lastname = $scope.employeeList[ix].lastname;
+  $scope.barList[c-1].employeeid = $scope.employeeList[ix].employeeid;
   var startParser = $scope.employeeList[ix].start.split(":");
   var stopParser = $scope.employeeList[ix].stop.split(":");
   if((startParser[0]*1) < 12){  
@@ -1577,110 +1702,152 @@ $scope.employeePick = function($index){
 // ========================== SAVE, CLOSE, CANCEL ========+=================
 // =========================================================================
 
+// SAVE THE DAY
+
 $scope.saveDay = function(){
-  var m = $scope.theDay.getMonth();
+  var m = $scope.theDay.getMonth()+1;
   var d = $scope.theDay.getDate();
-  var y = $scope.theDay.getYear();
+  var y = $scope.theDay.getFullYear().toString().substr(2,2)
   var theDate = (m + "-" + d + "-" + y);
-  var aH = rService.assignedHours.length;
-  var ss = rService.scheduleStatus.length;
+  var aH = $scope.assigned.length;
+  var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
   var exists = false;
+  var postList = [];
   
-  for (var i = 0; i < $scope.employeeList.length; i++) {
-    for (var k = 0; k < rService.assignedHours.length; k++) {
+  console.log("employeeList = ",$scope.employeeList.length);
+  for (var t = 0; t < $scope.barList.length; t++) {
+    for (var u = 0; u < $scope.employeeList.length; u++) {
+    if ($scope.employeeList[u].employeeid == $scope.barList[t].employeeid){
+      postList.push($scope.employeeList[u])
+    }
+    }
+  }
+  
+  for (var i = 0; i < postList.length; i++) {
+    for (var k = 0; k < $scope.assigned.length; k++) {
       exists = false;
-      if((rService.assignedHours[k].employeeid == $scope.employeeList[i].employeeid) &&
-      (rService.assignedHours[k].date == theDate)){
-        rService.assignedHours[k].start = $scope.employeeList[i].start;
-        rService.assignedHours[k].stop = $scope.employeeList[i].stop;
+      if(($scope.assigned[k].employeeid == postList[i].employeeid) &&
+      ($scope.assigned[k].date == theDate)){
+        $scope.assigned[k].start = postList[i].start;
+        $scope.assigned[k].stop = postList[i].stop;
         exists = true;
       }
     }
     if (exists == false){
-      tempObj.id = aH;
-      tempObj.employeeid = $scope.employeeList[i].employeeid;
+      tempObj.id = (aH + i);
+      tempObj.employeeid = postList[i].employeeid;
       tempObj.employerid = $scope.employeridNumber;
-      tempObj.date = theDate
-      tempObj.start = $scope.employeeList[i].start;
-      tempObj.stop = $scope.employeeList[i].stop;
-      rService.assignedHours.push(tempObj);
-      
+      tempObj.date = theDate;
+      tempObj.start = postList[i].start;
+      tempObj.stop = postList[i].stop;
+      rService.assignedHoursPost(tempObj);
+      console.log("assigned",tempObj);
     }
   };
-    for (var j = 0; j < rService.scheduleStatus.length; j++) {
-      if((rService.scheduleStatus[j].employerid ==  $scope.employeridNumber)
-      &&(rService.scheduleStatus[j].date == theDate)){
-        rService.scheduleStatus[j].edited = true;
-        rService.scheduleStatus[j].published = false;
-      }else{
-        tempObjB.id = ss;
-        tempObjB.employerid = $scope.employeridNumber;
-        tempObjB.date = theDate;
-        tempObjB.published = false;
-        tempObjB.edited = true;
-        rService.scheduleStatus[j] = tempObjB;
-      }
+    var saveTrigger = false;
+  
+    for (var j = 0; j < $scope.status.length; j++) {
+      if(($scope.status[j].employerid ==  $scope.employeridNumber)
+      &&($scope.status[j].date == theDate)){
+        $scope.status[j].edited = true;
+        $scope.status[j].published = false;
+      }else{ saveTrigger = true;}  
     }
-    console.log(' scheduleStatus upon publish =',rService.scheduleStatus);
-    console.log(' assignedHours upon publish =',rService.assignedHours);
+    if(saveTrigger  == true){
+      tempObjB.id = (ss + 1);
+      tempObjB.employerid = $scope.employeridNumber;
+      tempObjB.date = theDate;
+      tempObjB.published = false;
+      tempObjB.edited = true;
+      rService.scheduleStatusPost(tempObjB);
+      
+      saveTrigger = false;
+    }console.log("status",tempObjB);
+
+    // console.log(' scheduleStatus upon publish =',$scope.status);
+    // console.log(' assignedHours upon publish =',$scope.assigned);
 };
 
+// PUBLISH THE DAY
+
 $scope.publishDay = function(){
-  var m = $scope.theDay.getMonth();
+  var m = $scope.theDay.getMonth()+1;
   var d = $scope.theDay.getDate();
-  var y = $scope.theDay.getYear();
+  var y = $scope.theDay.getFullYear().toString().substr(2,2)
+  var postList = [];
   var theDate = (m + "-" + d + "-" + y);
-  var aH = rService.assignedHours.length;
-  var ss = rService.scheduleStatus.length;
+  var aH = $scope.assigned.length;
+  var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
   var exists = false;
 
-  for (var i = 0; i < $scope.employeeList.length; i++) {
-    for (var k = 0; k < rService.assignedHours.length; k++) {
+  for (var i = 0; i < postList.length; i++) {
+    for (var k = 0; k < $scope.assigned.length; k++) {
       exists = false;
-      if((rService.assignedHours[k].employeeid == $scope.employeeList[i].employeeid) &&
-      (rService.assignedHours[k].date == theDate)){
-        rService.assignedHours[k].start = $scope.employeeList[i].start;
-        rService.assignedHours[k].stop = $scope.employeeList[i].stop;
+      if(($scope.assigned[k].employeeid == postList[i].employeeid) &&
+      ($scope.assigned[k].date == theDate)){
+        $scope.assigned[k].start = postList[i].start;
+        $scope.assigned[k].stop = postList[i].stop;
         exists = true;
       }
     }
     if (exists == false){
-      tempObj.id = aH;
-      tempObj.employeeid = $scope.employeeList[i].employeeid;
+      tempObj.id = (aH + 1);
+      tempObj.employeeid = postList[i].employeeid;
       tempObj.employerid = $scope.employeridNumber;
       tempObj.date = theDate
-      tempObj.start = $scope.employeeList[i].start;
-      tempObj.stop = $scope.employeeList[i].stop;
-      rService.assignedHours.push(tempObj);
+      tempObj.start = postList[i].start;
+      tempObj.stop = postList[i].stop;
+    
+      rService.assignedHoursPost(tempObj);
       
     }
-  };
-    for (var j = 0; j < rService.scheduleStatus.length; j++) {
-      if((rService.scheduleStatus[j].employerid ==  $scope.employeridNumber)
-      &&(rService.scheduleStatus[j].date == theDate)){
-        rService.scheduleStatus[j].edited = true;
-        rService.scheduleStatus[j].published = true;
+  };console.log("assigned",tempObj);
+        publishTrigger = false;
+  
+    for (var j = 0; j < $scope.status.length; j++) {
+      if(($scope.status[j].employerid ==  $scope.employeridNumber)
+      &&($scope.status[j].date == theDate)){
+        $scope.status[j].edited = true;
+        $scope.status[j].published = true;
       }else{
-        tempObjB.id = ss;
-        tempObjB.employerid = $scope.employeridNumber;
-        tempObjB.date = theDate;
-        tempObjB.published = true;
-        tempObjB.edited = true;
-        rService.scheduleStatus[j] = tempObjB;
+        publishTrigger = true;
       }
     }
-    console.log(' scheduleStatus upon publish =',rService.scheduleStatus);
-    console.log(' assignedHours upon publish =',rService.assignedHours);
+    
+    if(publishTrigger == true){
+    tempObjB.id = (ss +1);
+    tempObjB.employerid = $scope.employeridNumber;
+    tempObjB.date = theDate;
+    tempObjB.published = true;
+    tempObjB.edited = true;
+    $scope.status[j] = tempObjB;
+    console.log("status",tempObjB);
+    rService.scheduleStatusPost(tempObjB);
+    publishTrigger = false;
+  }
+    
+    // console.log(' scheduleStatus upon publish =',$scope.status);
+    // console.log(' assignedHours upon publish =',$scope.assigned);
   };
 
 
 }]);
 angular.module('rosterRooster')
 .controller('employee', ["$scope", "$window", "rService", "availability", "employers", "employees", "users", function($scope,$window,rService,availability,employers,employees,users){
+  
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  
   
   // ========== sets employee id number ==========
   $scope.employeeidNumber = 1;
@@ -1706,10 +1873,10 @@ angular.module('rosterRooster')
   $scope.employeeLister = function(){
     var tempList = [];
     // console.log("employeeData is " , rService.employeeData);
-    for (var i = 0; i < rService.employeeData.length; i++) {
-        if ($scope.employeridNumber == rService.employeeData[i].employerid){
-        tempList.push(rService.employeeData[i]);
-        $scope.employeeList.push(rService.employeeData[i]);
+    for (var i = 0; i < $scope.employees.length; i++) {
+        if ($scope.employeridNumber == $scope.employees[i].employerid){
+        tempList.push($scope.employees[i]);
+        $scope.employeeList.push($scope.employees[i]);
       }
     }
     // console.log("employeeLister availHours is " , $scope.availHours);
@@ -1721,7 +1888,7 @@ angular.module('rosterRooster')
   
   }]);
 angular.module('rosterRooster')
-.controller('landing', ["$scope", "rService", "employers", "employees", "users", function($scope,rService,employers,employees,users){
+.controller('landing', ["$scope", "rService", function($scope, rService){
 
   $scope.pageTitle = {
     title: "ROSTER ROOSTER",
@@ -1780,7 +1947,20 @@ return{
 
 });
 
-angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rService", function($scope,$stateParams,rService){
+angular.module('rosterRooster')
+.controller('new', ["$scope", "$stateParams", "rService", "availability", "employers", "employees", "users", function($scope,$stateParams,rService, availability, employers, employees, users ){
+  
+  $scope.employers = employers;
+  // console.log('employers =', $scope.employers);
+  $scope.employees = employees;
+  // console.log('employees =', $scope.employees);
+  $scope.users = users;
+  // console.log('users =', $scope.users);
+  $scope.availability = availability;
+  // console.log('availability =', $scope.availability);
+  
+  
+  
   // ========== sets employee id number ==========
   $scope.employeeidNumber = 1;
   // ========== sets employer  number ==========
@@ -1803,8 +1983,8 @@ angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rS
   
   $scope.nextId = function(){
     var tempList = [];
-    for (var i = 0; i < rService.employeeData.length; i++) {
-      tempList.push(rService.employeeData[i].id)
+    for (var i = 0; i < $scope.employees.length; i++) {
+      tempList.push($scope.employees[i].id)
     }
     var x = (tempList.pop() + 1);
     return x;
@@ -1844,16 +2024,26 @@ angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rS
   $scope.dayParser = ['m', 'tu', 'w', 'th', 'f', 'st', 'sd'];
   
   // shows weekdays when selected
-
+  $scope.allDays = function(){
+    for (var i = 1; i < ($scope.dayParser.length); i++) {
+      $scope.availHours[($scope.dayParser[i]+'start')] = $scope.availHours.mstart;
+      $scope.availHours[($scope.dayParser[i]+'stop')] = $scope.availHours.mstop;
+    }
+    $scope.weekYes = false;
+    $scope.allYes = true;
+    $scope.showRestDays = true;
+  };
+  
   $scope.weekdays = function(){
     for (var i = 1; i < ($scope.dayParser.length - 2); i++) {
-      $scope.availHours[($scope.dayParser[i]+'Start')] = $scope.availHours.mstart;
-      $scope.availHours[($scope.dayParser[i]+'Stop')] = $scope.availHours.mstop;
+      $scope.availHours[($scope.dayParser[i]+'start')] = $scope.availHours.mstart;
+      $scope.availHours[($scope.dayParser[i]+'stop')] = $scope.availHours.mstop;
     }
     for (var i = 5; i < $scope.dayParser.length; i++) {
-      $scope.availHours[($scope.dayParser[i]+'Start')] = null;
-      $scope.availHours[($scope.dayParser[i]+'Stop')] = null;
+      $scope.availHours[($scope.dayParser[i]+'start')] = null;
+      $scope.availHours[($scope.dayParser[i]+'stop')] = null;
     }
+
     $scope.weekYes = true;
     $scope.allYes = false;
     $scope.showRestDays = true;
@@ -1861,16 +2051,17 @@ angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rS
   
   $scope.newSaveEmployeeData = function(){
     var x = $scope.selectedIdNumber;
-    rService.employeeData[x - 1] = $scope.currentEmployee;
+    rService.employeeDataPost($scope.currentEmployee);
   };
 
 
   // SAVES username AND PASSWORD INFORMATION
 
   $scope.newSaveMasterUsers = function(){
-   var x = (rService.masterUsers.length);
-   $scope.userData.id = x;
-   rService.masterUsers[x] = $scope.userData;
+   var x = ($scope.users.length);
+   $scope.userData.id = (x + 1);
+   console.log("userData =  ", $scope.userData);
+   rService.masterUsersPost($scope.userData);
   };
 
   // PARSES AVAILHOURS BACK TO ORIGINAL SYNTAX
@@ -1878,27 +2069,30 @@ angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rS
   $scope.parseAvailHours = function(){
     
     for (var i = 0; i < $scope.dayParser.length; i++) {
-      if($scope.availHours[($scope.dayParser [i] + "Start")]){
-        var h = $scope.availHours[($scope.dayParser [i] + "Start")].getHours();
-        var m = $scope.availHours[($scope.dayParser [i] + "Start")].getMinutes();
+      if($scope.availHours[($scope.dayParser [i] + "start")]){
+        var h = $scope.availHours[($scope.dayParser [i] + "start")].getHours();
+        var m = $scope.availHours[($scope.dayParser [i] + "start")].getMinutes();
+        if (m == 0){m = "00"};
         var joiner = [h, m];
-        $scope.availHours[($scope.dayParser [i] + "Start")] = joiner.join(':')
-      } else {$scope.availHours[($scope.dayParser [i] + "Start")] = null};
+        $scope.availHours[($scope.dayParser [i] + "start")] = joiner.join(':')
+      } else {$scope.availHours[($scope.dayParser [i] + "start")] = null};
       
-      if($scope.availHours[($scope.dayParser [i] + "Stop")]){
-        var h = $scope.availHours[($scope.dayParser [i] + "Stop")].getHours();
-        var m = $scope.availHours[($scope.dayParser [i] + "Stop")].getMinutes();
+      if($scope.availHours[($scope.dayParser [i] + "stop")]){
+        var h = $scope.availHours[($scope.dayParser [i] + "stop")].getHours();
+        var m = $scope.availHours[($scope.dayParser [i] + "stop")].getMinutes();
+        if (m == 0){m = "00"};
         var joiner = [h, m];
-        $scope.availHours[($scope.dayParser [i] + "Stop")] = joiner.join(':')
-      } else {$scope.availHours[($scope.dayParser [i] + "Stop")] = null};  
+        $scope.availHours[($scope.dayParser [i] + "stop")] = joiner.join(':')
+      } else {$scope.availHours[($scope.dayParser [i] + "stop")] = null};  
     }
   };
   
   // SAVES AVAILABILITY
   $scope.newSaveAvailHours = function(){
     $scope.availHours.employeeid = $scope.selectedIdNumber;
-    var x = (rService.employeeAvailable.length);
-    rService.employeeAvailable[x] = $scope.availHours;
+    var x = ($scope.availability.length);
+    $scope.availHours.id = (x + 1);
+    rService.employeeAvailablePost($scope.availHours);
   };
 
 
@@ -1914,9 +2108,9 @@ angular.module('rosterRooster').controller('new', ["$scope", "$stateParams", "rS
       console.log("2b SAVED availHours is " , $scope.availHours);
       console.log("2b SAVED userData is " , $scope.userData);
       console.log("2b SAVED currentEmployee is " , $scope.currentEmployee);
-      console.log("saved employeeAvailable is " , rService.employeeAvailable);
-      console.log("saved userData is " , rService.masterUsers);
-      console.log("saved currentEmployee is " , rService.employeeData);
+      console.log("saved employeeAvailable is " , $scope.availability);
+      console.log("saved userData is " , $scope.users);
+      console.log("saved currentEmployee is " , $scope.employees);
 
   }; 
 
@@ -1926,8 +2120,12 @@ angular.module('rosterRooster')
 
   
     $scope.employers = employers;
-  
-  
+    console.log('employers =', $scope.employers);
+    $scope.employees = employees;
+    console.log('employees =', $scope.employees);
+    $scope.assigned = assigned;
+    console.log('assigned =', $scope.assigned);
+    
     // ========== sets employee id number ==========
 
     $scope.employeeidNumber = 1;
@@ -2029,9 +2227,10 @@ angular.module('rosterRooster')
     // ========== compares calendar object wi database ==========
 
 
-    var assignedHours = rService.assignedHours;
+    var assignedHours = assigned;
 
-
+    console.log(assignedHours);
+    
     for (var m = 0; m < finalArray.length; m++) {
       for (var n = 0; n < assignedHours.length; n++) {
           var dateParser = assignedHours[n].date.split("-");

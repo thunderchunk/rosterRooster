@@ -288,7 +288,11 @@ $scope.employeePick = function($index){
   console.log("ePick = ", $scope.ePick);
   console.log("active column = ",$scope.activeColumn);
   console.log("barList = ", $scope.barList);
+  
 };
+
+
+
 // =========================================================================
 // ========================== SAVE, CLOSE, CANCEL ========+=================
 // =========================================================================
@@ -296,11 +300,11 @@ $scope.employeePick = function($index){
 // SAVE THE DAY
 
 $scope.saveDay = function(){
-  var m = $scope.theDay.getMonth()+1;
+  var m = ($scope.theDay.getMonth()+1);
   var d = $scope.theDay.getDate();
   var y = $scope.theDay.getFullYear().toString().substr(2,2)
   var theDate = (m + "-" + d + "-" + y);
-  var aH = $scope.assigned.length;
+
   var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
@@ -309,6 +313,7 @@ $scope.saveDay = function(){
   
   console.log("employeeList = ",$scope.employeeList.length);
   for (var t = 0; t < $scope.barList.length; t++) {
+      var aH = $scope.assigned.length;
     for (var u = 0; u < $scope.employeeList.length; u++) {
     if ($scope.employeeList[u].employeeid == $scope.barList[t].employeeid){
       postList.push($scope.employeeList[u])
@@ -364,18 +369,19 @@ $scope.saveDay = function(){
 // PUBLISH THE DAY
 
 $scope.publishDay = function(){
-  var m = $scope.theDay.getMonth()+1;
+  var m = ($scope.theDay.getMonth()+1);
   var d = $scope.theDay.getDate();
   var y = $scope.theDay.getFullYear().toString().substr(2,2)
   var postList = [];
   var theDate = (m + "-" + d + "-" + y);
-  var aH = $scope.assigned.length;
+  
   var ss = $scope.status.length;
   var tempObj = {};
   var tempObjB = {}
   var exists = false;
 
   for (var i = 0; i < postList.length; i++) {
+    var aH = $scope.assigned.length;
     for (var k = 0; k < $scope.assigned.length; k++) {
       exists = false;
       if(($scope.assigned[k].employeeid == postList[i].employeeid) &&

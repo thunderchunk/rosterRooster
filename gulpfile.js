@@ -1,15 +1,16 @@
 var gulp = require('gulp');
 var concat = require("gulp-concat");
 var annotate = require("gulp-ng-annotate");
-
+var cssimport = require("gulp-cssimport");
 var paths = {
    jsSource: ['public/app/**/*.js', 'public/views/**/*.js'],
-   cssSource: ['public/**/*.css']
+   cssSource: ['public/css/**/*.css', 'public/views/**/*.css']
 };
 
 gulp.task('css', function() {
    gulp.src(paths.cssSource)
        .pipe(concat('bundle.css'))
+       .pipe(cssimport())
        .pipe(gulp.dest('./public/dist'));
 });
 
