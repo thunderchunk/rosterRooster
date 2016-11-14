@@ -7,7 +7,7 @@ module.exports = {
     // ============================    USERS      ==============================  
     
   userGetter: function(req, res, next){
-    db.run("select * from users", function (err, response){
+    db.run("select * from users order by id", function (err, response){
     res.status(200).send(response);
     });
   },
@@ -38,7 +38,7 @@ module.exports = {
     // ============================    STATUS      ==============================
     
   statusGetter: function(req, res, next){
-    db.run("select * from status", function (err, response){
+    db.run("select * from status order by id", function (err, response){
     res.status(200).send(response);
     });
 
@@ -46,14 +46,14 @@ module.exports = {
   
   statusPoster: function(req, res, next) {
     db.status.insert({id:req.body.id,employerid:req.body.employerid,date:req.body.date,published:req.body.published,edited:req.body.edited}, function(err, response){
-    console.log('statusPoster' + err);
+    console.log('Status Poster Error: ' + err);
       res.status(200).send(response);
     })
   },
   
   statusPutter: function(req, res, next) {
     db.status.update([req.body.id,req.body.employerid,req.body.date,req.body.published,req.body.edited], function(err, response){
-      console.log('statusPutter' + err);
+      console.log('status Putter Error : ' + err);
       res.status(200).send(response);
     })
   },
@@ -69,7 +69,7 @@ module.exports = {
   // ============================    EMPLOYERS      ==============================
 
   employersGetter: function(req, res, next){
-    db.run("select * from employers", function (err, response){
+    db.run("select * from employers order by id", function (err, response){
     res.status(200).send(response);
     });
 
@@ -99,7 +99,7 @@ module.exports = {
   // ============================    EMPLOYEES      ==============================  
   
   employeesGetter: function(req, res, next){
-    db.run("select * from employees", function (err, response){
+    db.run("select * from employees order by id", function (err, response){
     res.status(200).send(response);
     });
 
@@ -131,7 +131,7 @@ module.exports = {
   // ============================    AVAILIBITY      ==============================  
   
   availabilityGetter: function(req, res, next){
-    db.run("select * from availability", function (err, response){
+    db.run("select * from availability order by id", function (err, response){
     res.status(200).send(response);
     });
   },
@@ -163,14 +163,14 @@ module.exports = {
     // ============================    ASSIGNED      ==============================  
   
   assignedGetter: function(req, res, next){
-    db.run("select * from assigned", function (err, response){
+    db.run("select * from assigned order by id", function (err, response){
     res.status(200).send(response);
     });
 
   },
   assignedPoster: function(req, res, next) {
     db.assigned.insert({id:req.body.id, employerid:req.body.employerid, employeeid:req.body.employeeid, date:req.body.date, start:req.body.start, stop:req.body.stop}, function(err, response){
-      console.log('errors: ' + err);
+      console.log('assigned Post Error: ' + err);
       res.status(200).send(response);
     })
   },
@@ -178,7 +178,7 @@ module.exports = {
   assignedPutter: function(req, res, next) {
     console.log("logbomb = ", req.body.id, req.body.employerid, req.body.employeeid, req.body.date, req.body.start, req.body.stop);
     db.assigned.update({id:req.body.id, employerid:req.body.employerid, employeeid:req.body.employeeid, date:req.body.date, start:req.body.start, stop:req.body.stop}, function(err, response){
-      console.log('errors: ' + err);
+      console.log('Assigned Put Error: ' + err);
       res.status(200).send(response);
     })
   },

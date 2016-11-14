@@ -37,8 +37,47 @@
 <div ng-click="hide()" class="psudoModalBackground darkBlueBkg" ng-show="called"></div>
 <!-- foreground -->
 <div class="psudoModalContainer whtBkg" ng-show="called">
-    <div class="psudoModal" ng-show="called">
-
-
+    <div class="modelContent">
+      <div class="welcome greenBkg">
+        <h3 class="wht">Enter your company name and login information</h3>
+      </div>
+      <form ng-submit="newUser()">
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Username</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" 
+            name="username" ng-model="loginUser.firstname">
+        </div>
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Password</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="password" 
+            name="Password" ng-model="loginUser.password">
+        </div>
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Company</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" 
+            name="Company" ng-model="loginUser.employername">
+        </div>
+        <div class="singleInputHolder">
+            <h3 class="inputDescription darkBlue">Email</h3>
+            <input class="basicInput bigInput darkBlueBkg wht" type="text" 
+            name="Email" ng-model="loginUser.email">
+        </div>
+      
+          <div class="landingToolbar">
+            <div ng-click="hide()"  ui-sref="employee" class="landingTool">
+                <img class="barImage" src="./images/publish.svg" alt="save" />
+                <h3 class=" barTxt green">Save</h3>
+            </div>
+            <div ng-click="hide()"  class="landingTool">
+                <img class="barImage" src="./images/cancel.svg" alt="cancel" />
+                <h3 class=" barTxt red">Cancel</h3>
+            </div>
+          </div>
+      
+          
+        
+      </form>
+      
     </div>
 </div>
+

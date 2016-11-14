@@ -136,11 +136,20 @@ h5{
   margin-left: 5px;
 }
 
-/*main calendar styles*/
 .bkgrd{
   height:100vh;
   width: 100vw;
 }
+
+
+
+/*main calendar styles*/
+
+
+
+
+
+
 
 .calendarHolder{
   height:400px;
@@ -223,6 +232,44 @@ h5{
   height:20px;
   width: 20px;
 }
+
+.dotwHolder{
+  width: 280px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  margin: 10px auto;
+}
+.dotw{
+  width:40px;
+}
+
+
+@media (min-width: 560px){
+.calendarFiller{
+  height:480px;
+  width:560px;
+  margin:10px auto 10px;
+}
+.calendar{
+  height:400px;
+  width:560px;
+}
+.day{
+  height:80px;
+  width: 80px;
+  padding-top: 30px;
+  border: 1px solid white;
+}
+
+.dotwHolder{
+  width: 560px;
+  margin: 10px auto;
+}
+.dotw{
+  width:80px;
+}
+
 
 
 
@@ -502,6 +549,7 @@ justify-content: space-around;
   margin: 15px 0 15px 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .adderBox{
@@ -510,6 +558,7 @@ justify-content: space-around;
   margin: 15px 0 15px 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   
 }
 
@@ -676,9 +725,21 @@ justify-content: space-around;
   background-color: #2176C7;
 }
 
+@media (min-width: 560px){
+  .singleInputHolder{
+    justify-content: center;
+}
+
+  .multiInputHolder{
+    justify-content: center;
+  }
+  
+}
+
+
+
 
   
-/*modal*/
 
 .psudoModalBackground{
   height:100vh;
@@ -690,20 +751,53 @@ justify-content: space-around;
 }
 
 .psudoModalContainer{
+  height: 300px;
+  width: 260px;
   display: flex;
   justify-content: center;
   position:fixed;
-  top: 0;
+  top: 50%;
+  margin-top: -150px;
+  left: 50%;
+  margin-left: -130px;
   z-index: 2;
+  opacity: 1
 }
 
-.psudoModal{
-  width: 200px;
-  height: 300px;
+.welcome{
+  width: 260px;
+  padding: 10px;
+  margin: 5px auto;
+}
+
+.landingToolbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.landingTool{
+  display: flex;
+  flex-direction: row;
+}
+
+.barImage{
+  height:20px;
+  width: 20px;
+  margin: 0 10px 0 20px;
+}
+.barTxt{
+  margin: 2px;
+}
+
+.modelContent{
+  width: 300px;
+  height: 260px;
   z-index: 20;
   margin: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .landingBox{
@@ -711,7 +805,7 @@ justify-content: space-around;
   width: 100vw;
 }
 
-@media (max-width: 320px) {
+
 
 .inputHolder{
   padding-top: 75px;
@@ -727,6 +821,7 @@ justify-content: space-around;
 #logo{
   margin:50px auto 30px;
   height: 250px;
+  width: 194px;
   display: block;
   margin: auto;
 }
@@ -750,7 +845,13 @@ justify-content: space-around;
   display: flex;
   flex-flow: row;
   justify-content: space-around;
-  margin: 30px;
+  margin: 30px auto;
+  width: 300px;
+}
+
+
+@media (min-width: 320px) {
+  
 }
 
 .navBox{

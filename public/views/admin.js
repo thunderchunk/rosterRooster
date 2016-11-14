@@ -8,7 +8,7 @@ angular.module('rosterRooster')
   $scope.users = users;
   // console.log('users =', $scope.users);
   $scope.availability = availability;
-  // console.log('availability =', $scope.availability);
+  console.log('availability =', $scope.availability);
   
   
     // ========== sets employee id number ==========
@@ -109,9 +109,9 @@ angular.module('rosterRooster')
     
     $scope.getUserData();
     $scope.getAvailHours();
-    console.log($scope.currentEmployee);
-    console.log($scope.userData);
-    console.log($scope.availHours);
+    console.log("upon display currentEmployee =",$scope.currentEmployee);
+    console.log("upon display  userData =",$scope.userData);
+    console.log("upon display  availHours =",$scope.availHours);
     
     // ======================= SAVES AND EXITS VIEW =====================
     // ==================================================================
@@ -119,25 +119,12 @@ angular.module('rosterRooster')
     // SAVES ROOT EMPLOYEE  INFORMATION
 
     $scope.saveEmployeeData = function(){
-    for (var l = 0; l < employees.length; l++) {
-      if(employees[l].employeeid == $scope.selectedIdNumber){
-        rService.employeeDataPut($scope.currentEmployee);
-      }
-    }
+      rService.employeeDataPut($scope.currentEmployee)
     };
-    
-    // SAVES username AND PASSWORD INFORMATION
 
     $scope.saveMasterUsers = function(){
-    for (var m = 0; m < users.length; m++) {
-      if(users[m].employeeid == $scope.selectedIdNumber){
-        $scope.userData.id = users[m].id;
-        rService.masterUsersPut($scope.userData);
-      }
-    }
+      rService.masterUsersPut($scope.userData)
     };
-
-    // PARSES AVAILHOURS BACK TO ORIGINAL SYNTAX
 
     $scope.parseAvailHours = function(){
       
@@ -163,15 +150,11 @@ angular.module('rosterRooster')
     // SAVES EMPLOYEE AVAIL
 
     $scope.saveAvailHours = function(){
-      $scope.availHours.employeeid = $scope.selectedIdNumber;
-      
-      for (var i = 0; i < availability.length; i++) {
-        if(availability[i].employeeid = $scope.selectedIdNumber){
-          $scope.availHours.id = availability[i].id;
-          rService.employeeAvailablePut($scope.availHours);
-        }
-    }
+      $scope.availHours.employeeid = $scope.selectedIdNumber
+      rService.employeeAvailablePut($scope.availHours)
     };
+    
+
     
 // ========== SAVE AND CLOSE FUNCTION - EDITED EMPLOYEES ONLY ==========
 
@@ -182,13 +165,31 @@ angular.module('rosterRooster')
       $scope.parseAvailHours();
       $scope.saveAvailHours();
 
-        console.log("2b SAVED availHours is " , $scope.availHours);
-        console.log("2b SAVED userData is " , $scope.userData);
-        console.log("2b SAVED currentEmployee is " , $scope.currentEmployee);
-        console.log("saved employeeAvailable is " , availability);
-        console.log("saved userData is " , users);
-        console.log("saved currentEmployee is " , employees);
+        // console.log("2b SAVED availHours is " , $scope.availHours);
+        // console.log("2b SAVED userData is " , $scope.userData);
+        // console.log("2b SAVED currentEmployee is " , $scope.currentEmployee);
+
         
     }; 
+    // ========== SAVE AND CLOSE FUNCTION - EDITED EMPLOYEES ONLY ==========
+    
+    
+    $scope.deleteEmployee = function(){
+      idDeleter = {
+        id: $scope.selectedIdNumber
+      };
+      employeridDeleter = {
+        employeeid: $scope.selectedIdNumber
+      }
+      
+      $scope.employeeAvailableDelete(employeridDeleter);
+      $scope.employeeDataDelete(idDeleter);
+      $scope.masterUsersDelete(employeridDeleter);
+      
+    };
+    
+    
+    
+    
     
   });
